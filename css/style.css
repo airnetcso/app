@@ -18,8 +18,8 @@ h1,h2{text-align:center;margin:5px 0;}
   margin:10px;
 }
 .box{
-  width:60px;
-  height:60px;
+  width:65px;
+  height:65px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -92,3 +92,4 @@ h1,h2{text-align:center;margin:5px 0;}
   margin:20px;
   font-weight:bold;
 }
+
