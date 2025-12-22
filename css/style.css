@@ -31,7 +31,7 @@ h1,h2{text-align:center;margin:5px 0;}
   cursor:pointer;
   transition:0.3s;
 }
-.box.reading{background:linear-gradient(135deg,#0f0,#0ff);}
+.box.reading{background:#0f0,#0ff;}
 .box.answered{
   background:#ccc;
   color:#000;
@@ -92,6 +92,7 @@ h1,h2{text-align:center;margin:5px 0;}
   margin:20px;
   font-weight:bold;
 }
+
 
 
 
