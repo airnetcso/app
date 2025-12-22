@@ -23,7 +23,7 @@ h1,h2{text-align:center;margin:5px 0;}
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#0033aa,#0055cc;
+  background:linear-gradient(135deg,#0033aa,#0055cc);
   color:#fff;
   border-radius:8px;
   font-weight:bold;
@@ -31,7 +31,7 @@ h1,h2{text-align:center;margin:5px 0;}
   cursor:pointer;
   transition:0.3s;
 }
-.box.reading{background:#0f0,#0ff;}
+.box.reading{background:linear-gradient(135deg,#007700,#00aa00);}
 .box.answered{
   background:#ccc;
   color:#000;
@@ -92,6 +92,7 @@ h1,h2{text-align:center;margin:5px 0;}
   margin:20px;
   font-weight:bold;
 }
+
 
 
 
