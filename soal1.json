@@ -7,23 +7,6 @@
     "answer": "Halo",
     "image": null,
     "audio": null
-  },
-  {
-    "id": "2",
-    "type": "image",
-    "question": "Gambar mana yang menunjukkan bendera Korea?",
-    "options": ["option1.png","option2.png","option3.png","option4.png"],
-    "answer": "option2.png",
-    "image": "soal2.png",
-    "audio": null
-  },
-  {
-    "id": "3",
-    "type": "audio",
-    "question": "Dengar audio ini dan pilih jawaban yang benar",
-    "options": ["Halo","Selamat malam","Terima kasih","Maaf"],
-    "answer": "Terima kasih",
-    "image": null,
-    "audio": "soal3.mp3"
   }
 ]
+
