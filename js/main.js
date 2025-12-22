@@ -2,6 +2,7 @@ let timer = 50*60;
 const timerEl = document.getElementById('timer');
 let questions = [];
 let score = 0;
+const pointPerQuestion = 2.5; // nilai per soal
 
 // Timer
 setInterval(()=>{
@@ -68,7 +69,7 @@ function openModal(q, box){
         const btn=document.createElement('button');
         btn.textContent=`${index+1}. ${opt}`;
         btn.onclick=()=>{
-            if(opt===q.answer) score++;
+            if(opt===q.answer) score += pointPerQuestion; // 2.5 per soal
             box.classList.add('answered');
             box.dataset.answer=opt;
             closeModal();
@@ -113,6 +114,6 @@ function showResult(){
     document.querySelector('.container').style.display='none';
     document.querySelector('.controls').style.display='none';
     timerEl.style.display='none';
-    document.getElementById('result').textContent=`Skor akhir: ${score} / ${questions.length}`;
+    document.getElementById('result').textContent=
+        `Skor akhir: ${score} / ${questions.length * pointPerQuestion}`;
 }
-
