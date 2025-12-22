@@ -1,36 +1,71 @@
-/* Kotak soal lebih kecil dan warna lebih dop */
+body{
+  font-family:sans-serif;
+  margin:0;
+  padding:0;
+}
+h1,h2{text-align:center;margin:5px 0;}
+#timer{
+  position:sticky;
+  top:0;
+  background:#222;color:#fff;padding:10px;font-size:18px;text-align:center;
+  z-index:10;
+}
+.grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin:10px;
+}
 .box{
-  width:50px;
-  height:50px;
+  width:60px;
+  height:60px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#0033aa,#0055cc); /* biru tua dop */
+  background:linear-gradient(135deg,#00f,#0ff);
   color:#fff;
-  border-radius:6px;
+  border-radius:8px;
   font-weight:bold;
-  font-size:16px;
+  font-size:18px;
   cursor:pointer;
   transition:0.3s;
 }
-.box.reading{
-  background:linear-gradient(135deg,#007700,#00aa00); /* hijau tua dop */
-  color:#fff;
-}
-
-/* Kotak sudah dijawab */
+.box.reading{background:linear-gradient(135deg,#0f0,#0ff);}
 .box.answered{
   background:#ccc;
   color:#000;
   cursor:default;
 }
-
-/* Tambah margin bawah container supaya kotak terakhir tidak tertutup tombol */
-.container{
-  margin-bottom:80px; /* cukup untuk tombol floating controls */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;align-items:center;
+  padding:10px;
+  box-sizing:border-box;
 }
-
-/* Kontrol tombol tetap floating di bawah */
+.modal-content{
+  background:#fff;
+  border-radius:10px;
+  padding:15px;
+  width:100%;
+  max-width:500px;
+  box-sizing:border-box;
+  overflow:auto;
+}
+#options button{
+  margin:5px 0;
+  padding:12px;
+  width:100%;
+  font-size:16px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
+}
+#options button:hover{background:#ddd;}
 .controls{
   position:fixed;
   bottom:10px;
@@ -38,5 +73,22 @@
   transform:translateX(-50%);
   display:flex;
   gap:10px;
-  z-index:100;
+}
+.controls button{
+  padding:10px 15px;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  background:#007bff;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 2px 5px rgba(0,0,0,0.3);
+  transition:0.2s;
+}
+.controls button:hover{background:#0056b3;}
+#result{
+  text-align:center;
+  font-size:22px;
+  margin:20px;
+  font-weight:bold;
 }
