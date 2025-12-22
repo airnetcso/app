@@ -1,5 +1,5 @@
 // Timer 50 menit
-let timer = 50*60; 
+let timer = 50*60;
 const timerEl = document.getElementById('timer');
 
 setInterval(()=>{
@@ -17,7 +17,7 @@ setInterval(()=>{
 let questions = [];
 let score = 0;
 
-// Fetch soal dari GitHub
+// Fetch soal dari raw GitHub URL
 fetch('https://raw.githubusercontent.com/airnetcso/app/main/soal.json')
   .then(res => res.json())
   .then(data => {
@@ -26,24 +26,23 @@ fetch('https://raw.githubusercontent.com/airnetcso/app/main/soal.json')
   })
   .catch(err => alert("Gagal load soal"));
 
-// Setup dashboard kotak soal
 function setupDashboard() {
   const listeningGrid = document.getElementById('listeningGrid');
   const readingGrid = document.getElementById('readingGrid');
 
-  let lNumber = 1;   // Listening nomor 1-20
-  let rNumber = 21;  // Reading nomor 21-40
+  let lNumber = 1;
+  let rNumber = 21;
 
   questions.forEach(q => {
     const box = document.createElement('div');
     box.classList.add('box');
 
-    if(q.audio){ // Listening
+    if(q.audio){
       box.classList.add('listening');
       box.textContent = lNumber;
       lNumber++;
       listeningGrid.appendChild(box);
-    } else { // Reading
+    } else {
       box.classList.add('reading');
       box.textContent = rNumber;
       rNumber++;
@@ -65,11 +64,9 @@ function openModal(q, box){
   questionText.innerHTML = `<p>${q.question}</p>`;
   mediaDiv.innerHTML = '';
 
-  // tampilkan media jika ada
   if(q.image) mediaDiv.innerHTML = `<img src="${q.image}">`;
   if(q.audio) mediaDiv.innerHTML = `<audio controls src="${q.audio}"></audio>`;
 
-  // generate pilihan jawaban dengan nomor 1–4
   optionsDiv.innerHTML = '';
   q.options.forEach((opt,index) => {
     const btn = document.createElement('button');
@@ -78,6 +75,10 @@ function openModal(q, box){
       if(opt === q.answer) score++;
       box.classList.add('answered');
       closeModal();
+
+      // auto submit jika semua soal dijawab
+      const allAnswered = document.querySelectorAll('.box.answered').length === questions.length;
+      if(allAnswered) showResult();
     };
     optionsDiv.appendChild(btn);
   });
@@ -89,10 +90,19 @@ function closeModal(){
   modal.style.display = 'none';
 }
 
-// tampilkan hasil akhir
+// tombol submit manual
+document.getElementById('submitBtn').onclick = ()=>{
+    const unanswered = document.querySelectorAll('.box:not(.answered)').length;
+    if(unanswered>0){
+        if(!confirm(`Masih ada ${unanswered} soal belum dijawab. Tetap submit?`)) return;
+    }
+    showResult();
+};
+
 function showResult(){
   modal.style.display = 'none';
   document.querySelector('.container').style.display = 'none';
+  document.querySelector('.controls').style.display = 'none';
   timerEl.style.display = 'none';
   document.getElementById('result').textContent = `Skor akhir: ${score} / ${questions.length}`;
 }
