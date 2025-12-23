@@ -1,176 +1,43 @@
 [
   {
-  "id": 1,
-  "type": "text",
-  "question": "아침에 일어난 후 가장 먼저 하는 일은 무엇인가요?",
-  "options": [
-    "저녁 식사하기",
-    "잠자리에 들기",
-    "세수하고 양치하기",
-    "영화 보러 가기"
-  ],
-  "answer": "세수하고 양치하기",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 2,
-  "type": "text",
-  "question": "출근이나 등교할 때 자주 이용하는 것은 무엇인가요?",
-  "options": [
-    "침대",
-    "냉장고",
-    "버스나 지하철",
-    "텔레비전"
-  ],
-  "answer": "버스나 지하철",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 3,
-  "type": "text",
-  "question": "한국에서 점심 식사로 흔히 먹는 것은 무엇인가요?",
-  "options": [
-    "잠",
-    "빵과 커피",
-    "밥과 반찬",
-    "운동"
-  ],
-  "answer": "밥과 반찬",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 4,
-  "type": "text",
-  "question": "일이나 학교가 끝난 후에 집에 돌아오는 것을 한국어로 무엇이라고 하나요?",
-  "options": [
-    "출근하다",
-    "퇴근하다/하교하다",
-    "식사하다",
-    "공부하다"
-  ],
-  "answer": "퇴근하다/하교하다",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 5,
-  "type": "text",
-  "question": "하루를 마치고 잠자리에 들기 전에 하는 인사는 무엇인가요?",
-  "options": [
-    "안녕하세요",
-    "좋은 아침입니다",
-    "안녕히 주무세요",
-    "어서 오세요"
-  ],
-  "answer": "안녕히 주무세요",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 6,
-  "type": "text",
-  "question": "옷을 입고 벗는 행위를 한국어로 무엇이라고 하나요?",
-  "options": [
-    "요리하다",
-    "청소하다",
-    "옷을 갈아입다",
-    "잠을 자다"
-  ],
-  "answer": "옷을 갈아입다",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 7,
-  "type": "text",
-  "question": "집안을 깨끗하게 하는 행위를 한국어로 무엇이라고 하나요?",
-  "options": [
-    "빨래하다",
-    "설거지하다",
-    "요리하다",
-    "청소하다"
-  ],
-  "answer": "청소하다",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 8,
-  "type": "text",
-  "question": "저녁 식사를 한 후에 주로 무엇을 하나요?",
-  "options": [
-    "출근하다",
-    "등교하다",
-    "TV를 보거나 휴식하다",
-    "잠을 자다"
-  ],
-  "answer": "TV를 보거나 휴식하다",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 9,
-  "type": "text",
-  "question": "아침에 일어나서 잠이 깨도록 마시는 음료는 무엇인가요?",
-  "options": [
-    "물",
-    "주스",
-    "커피",
-    "콜라"
-  ],
-  "answer": "커피",
-  "image": null,
-  "audio": null
-}
-{
-  "id": 10,
-  "type": "text",
-  "question": "배가 고플 때 식사 시간 외에 간단히 먹는 것을 무엇이라고 하나요?",
-  "options": [
-    "간식",
-    "주식",
-    "야식",
-    "후식"
-  ],
-  "answer": "간식",
-  "image": null,
-  "audio": null
-}
-  {"id":"10","type":"audio","question":"Dengar audio ini, pilih bunyi yang sesuai","options":["Air","Angin","Api","Hujan"],"answer":"Hujan","image":null,"audio":"https://example.com/audio10.mp3"},
-  {"id":"11","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Kelinci","image":"https://example.com/rabbit.png","audio":"https://example.com/audio11.mp3"},
-  {"id":"12","type":"audio","question":"Dengar audio ini, kata yang terdengar adalah?","options":["Mobil","Sepeda","Motor","Truk"],"answer":"Motor","image":null,"audio":"https://example.com/audio12.mp3"},
-  {"id":"13","type":"audio","question":"Dengar audio ini, pilih kata yang benar","options":["Meja","Kursi","Lampu","Pintu"],"answer":"Lampu","image":null,"audio":"https://example.com/audio13.mp3"},
-  {"id":"14","type":"image","question":"Gambar ini menunjukkan buah apa?","options":["Apel","Jeruk","Pisang","Mangga"],"answer":"Apel","image":"https://example.com/apple.png","audio":"https://example.com/audio14.mp3"},
-  {"id":"15","type":"audio","question":"Dengar audio ini, kata yang terdengar adalah?","options":["Buku","Pensil","Pulpen","Penghapus"],"answer":"Pulpen","image":null,"audio":"https://example.com/audio15.mp3"},
-  {"id":"16","type":"audio","question":"Dengar audio ini, pilih bunyi yang sesuai","options":["Burung","Kucing","Anjing","Ayam"],"answer":"Ayam","image":null,"audio":"https://example.com/audio16.mp3"},
-  {"id":"17","type":"image","question":"Gambar ini menunjukkan alat musik apa?","options":["Gitar","Piano","Drum","Biola"],"answer":"Gitar","image":"https://example.com/guitar.png","audio":"https://example.com/audio17.mp3"},
-  {"id":"18","type":"audio","question":"Dengar audio ini, pilih kata yang terdengar","options":["Rumah","Sekolah","Toko","Kantor"],"answer":"Toko","image":null,"audio":"https://example.com/audio18.mp3"},
-  {"id":"19","type":"audio","question":"Dengar audio ini, kata yang benar adalah?","options":["Makan","Minum","Tidur","Baca"],"answer":"Tidur","image":null,"audio":"https://example.com/audio19.mp3"},
-  {"id":"20","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Truk","image":"https://example.com/truck.png","audio":"https://example.com/audio20.mp3"},
-  
-  {"id":"21","type":"text","question":"ari maneh saha?","options":["Tidur","Makan","Berlari","Bermain"],"answer":"Tidur","image":null,"audio":null},
-  {"id":"22","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Kucing","image":"https://example.com/cat.png","audio":null},
-  {"id":"23","type":"text","question":"Bacalah teks: 'Burung terbang di langit biru'. Apa yang dilakukan burung?","options":["Terbang","Berenang","Berlari","Tidur"],"answer":"Terbang","image":null,"audio":null},
-  {"id":"24","type":"text","question":"Bacalah teks: 'Anjing menggonggong di malam hari'. Apa yang dilakukan anjing?","options":["Menggonggong","Tidur","Makan","Berlari"],"answer":"Menggonggong","image":null,"audio":null},
-  {"id":"25","type":"image","question":"Gambar ini menunjukkan buah apa?","options":["Apel","Jeruk","Pisang","Mangga"],"answer":"Jeruk","image":"https://example.com/orange.png","audio":null},
-  {"id":"26","type":"text","question":"Bacalah teks: 'Ibu memasak di dapur'. Siapa yang memasak?","options":["Ibu","Ayah","Anak","Kucing"],"answer":"Ibu","image":null,"audio":null},
-  {"id":"27","type":"text","question":"Bacalah teks: 'Anak-anak bermain di taman'. Siapa yang bermain?","options":["Anak-anak","Orang dewasa","Kucing","Ayam"],"answer":"Anak-anak","image":null,"audio":null},
-  {"id":"28","type":"image","question":"Gambar ini menunjukkan alat musik apa?","options":["Gitar","Piano","Drum","Biola"],"answer":"Piano","image":"https://example.com/piano.png","audio":null},
-  {"id":"29","type":"text","question":"Bacalah teks: 'Mobil berjalan di jalan raya'. Apa yang berjalan?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Mobil","image":null,"audio":null},
-  {"id":"30","type":"text","question":"Bacalah teks: 'Burung berkicau di pagi hari'. Apa yang dilakukan burung?","options":["Berkicau","Tidur","Berlari","Makan"],"answer":"Berkicau","image":null,"audio":null},
-  {"id":"31","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Motor","image":"https://example.com/motor.png","audio":null},
-  {"id":"32","type":"text","question":"Bacalah teks: 'Ibu menanam bunga di taman'. Siapa yang menanam bunga?","options":["Ibu","Ayah","Anak","Kucing"],"answer":"Ibu","image":null,"audio":null},
-  {"id":"33","type":"text","question":"Bacalah teks: 'Ayah membaca koran'. Siapa yang membaca?","options":["Ayah","Ibu","Anak","Kucing"],"answer":"Ayah","image":null,"audio":null},
-  {"id":"34","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Ayam","image":"https://example.com/chicken.png","audio":null},
-  {"id":"35","type":"text","question":"Bacalah teks: 'Anak belajar menulis'. Siapa yang belajar menulis?","options":["Anak","Orang dewasa","Kucing","Ayam"],"answer":"Anak","image":null,"audio":null},
-  {"id":"36","type":"text","question":"Bacalah teks: 'Mobil berhenti di lampu merah'. Apa yang berhenti?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Mobil","image":null,"audio":null},
-  {"id":"37","type":"image","question":"Gambar ini menunjukkan buah apa?","options":["Apel","Jeruk","Pisang","Mangga"],"answer":"Pisang","image":"https://example.com/banana.png","audio":null},
-  {"id":"38","type":"text","question":"Bacalah teks: 'Ayam berlari di halaman'. Apa yang berlari?","options":["Ayam","Kucing","Anjing","Burung"],"answer":"Ayam","image":null,"audio":null},
-  {"id":"39","type":"text","question":"Bacalah teks: 'Anak-anak menari di panggung'. Apa yang dilakukan anak-anak?","options":["Menari","Tidur","Berlari","Bernyanyi"],"answer":"Menari","image":null,"audio":null},
-  {"id":"40","type":"image","question":"Gambar ini menunjukkan alat transportasi apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Sepeda","image":"https://example.com/bike.png","audio":null}
-]
-
-
+    "id": "1",
+    "type": "listening",
+    "question": "다음 음성을 듣고 알맞은 답을 고르세요.",
+    "options": [
+      "회사에 갑니다",
+      "집에 갑니다",
+      "학교에 갑니다",
+      "병원에 갑니다"
+    ],
+    "answer": "회사에 갑니다",
+    "image": null,
+    "audio": "audio/listening_01.mp3"
+  },
+  {
+    "id": "2",
+    "type": "listening",
+    "question": "다음 음성을 듣고 여자가 하는 말을 고르세요.",
+    "options": [
+      "커피를 마십니다",
+      "물을 마십니다",
+      "밥을 먹습니다",
+      "잠을 잡니다"
+    ],
+    "answer": "커피를 마십니다",
+    "image": null,
+    "audio": "audio/listening_02.mp3"
+  },
+  {
+    "id": "3",
+    "type": "listening",
+    "question": "다음 음성을 듣고 맞는 문장을 고르세요.",
+    "options": [
+      "지금 비가 옵니다",
+      "오늘 날씨가 춥습니다",
+      "내일 눈이 옵니다",
+      "어제 비가 왔습니다"
+    ],
+    "answer": "지금 비가 옵니다",
+    "image": null,
+    "audio": "audio/listening_03.mp3"
+  }
