@@ -228,15 +228,19 @@ h1,h2{
 
 /* card login */
 .login-card{
-  position:relative;
-  background:#ffffff;
-  width:90%;
-  max-width:360px;
-  padding:25px 22px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.25);
-  text-align:center;
-  z-index:2;
+  position: relative;
+  width: 90%;
+  max-width: 360px;
+  padding: 25px 22px;
+  border-radius: 16px;
+  text-align: center;
+  z-index: 2;
+
+  /* glass effect */
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
 }
 
 .login-card h2{
