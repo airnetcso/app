@@ -1,5 +1,5 @@
 [
-  {"id":"1","type":"text","question":"무심천은 어느 도시에 있습니까?","options":["서울","부산","청주","제주"],"correct_answer":"청주"},
+  {"id":"1","type":"audio","question":ieu nomor sabaraha?","options":["Air","Api","Angin","Hujan"],"answer":"Air","image":null,"audio":"https://example.com/audio1.mp3"},
   {"id":"2","type":"image","question":"Gambar mana yang menunjukkan anjing?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Anjing","image":"https://example.com/dog.png","audio":"https://example.com/audio2.mp3"},
   {"id":"3","type":"audio","question":"Dengar audio ini, kata apa yang terdengar?","options":["Halo","Selamat malam","Terima kasih","Maaf"],"answer":"Halo","image":null,"audio":"https://example.com/audio3.mp3"},
   {"id":"4","type":"audio","question":"Dengar audio ini, pilih kata yang benar","options":["Makan","Minum","Tidur","Baca"],"answer":"Makan","image":null,"audio":"https://example.com/audio4.mp3"},
@@ -19,8 +19,8 @@
   {"id":"18","type":"audio","question":"Dengar audio ini, pilih kata yang terdengar","options":["Rumah","Sekolah","Toko","Kantor"],"answer":"Toko","image":null,"audio":"https://example.com/audio18.mp3"},
   {"id":"19","type":"audio","question":"Dengar audio ini, kata yang benar adalah?","options":["Makan","Minum","Tidur","Baca"],"answer":"Tidur","image":null,"audio":"https://example.com/audio19.mp3"},
   {"id":"20","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Truk","image":"https://example.com/truck.png","audio":"https://example.com/audio20.mp3"},
-
-  {"id":"21","type":"text","question":"Bacalah teks: 'bade kamana atuh bapak ibu teh?","options":["modol","sare","diuk","bahgoy"],"answer":"Tidur","image":null,"audio":null},
+  
+  {"id":"21","type":"text","question":"ari maneh saha?","options":["Tidur","Makan","Berlari","Bermain"],"answer":"Tidur","image":null,"audio":null},
   {"id":"22","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Kucing","image":"https://example.com/cat.png","audio":null},
   {"id":"23","type":"text","question":"Bacalah teks: 'Burung terbang di langit biru'. Apa yang dilakukan burung?","options":["Terbang","Berenang","Berlari","Tidur"],"answer":"Terbang","image":null,"audio":null},
   {"id":"24","type":"text","question":"Bacalah teks: 'Anjing menggonggong di malam hari'. Apa yang dilakukan anjing?","options":["Menggonggong","Tidur","Makan","Berlari"],"answer":"Menggonggong","image":null,"audio":null},
@@ -41,8 +41,3 @@
   {"id":"39","type":"text","question":"Bacalah teks: 'Anak-anak menari di panggung'. Apa yang dilakukan anak-anak?","options":["Menari","Tidur","Berlari","Bernyanyi"],"answer":"Menari","image":null,"audio":null},
   {"id":"40","type":"image","question":"Gambar ini menunjukkan alat transportasi apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Sepeda","image":"https://example.com/bike.png","audio":null}
 ]
-
-
-
-
-
