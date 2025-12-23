@@ -230,7 +230,7 @@ h1,h2{
 .login-card{
   position: relative;
   width: 90%;
-  max-width: 360px;
+  max-width: 320px;
   padding: 25px 22px;
   border-radius: 16px;
   text-align: center;
@@ -280,5 +280,6 @@ h1,h2{
 .login-card button:hover{
   background:#1e40af;
 }
+
 
 
