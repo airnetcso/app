@@ -1,43 +1,367 @@
 [
-  {"id":"1","type":"audio","question":"Dengar audio ini, apa bunyi yang terdengar?","options":["Air","Api","Angin","Hujan"],"answer":"Air","image":null,"audio":"https://example.com/audio1.mp3"},
-  {"id":"2","type":"image","question":"Gambar mana yang menunjukkan anjing?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Anjing","image":"https://example.com/dog.png","audio":"https://example.com/audio2.mp3"},
-  {"id":"3","type":"audio","question":"Dengar audio ini, kata apa yang terdengar?","options":["Halo","Selamat malam","Terima kasih","Maaf"],"answer":"Halo","image":null,"audio":"https://example.com/audio3.mp3"},
-  {"id":"4","type":"audio","question":"Dengar audio ini, pilih kata yang benar","options":["Makan","Minum","Tidur","Baca"],"answer":"Makan","image":null,"audio":"https://example.com/audio4.mp3"},
-  {"id":"5","type":"image","question":"Gambar ini menunjukkan apa?","options":["Meja","Kursi","Lampu","Pintu"],"answer":"Meja","image":"https://example.com/desk.png","audio":"https://example.com/audio5.mp3"},
-  {"id":"6","type":"audio","question":"Dengar audio ini, pilih bunyi yang sesuai","options":["Burung","Kucing","Anjing","Ayam"],"answer":"Burung","image":null,"audio":"https://example.com/audio6.mp3"},
-  {"id":"7","type":"audio","question":"Dengar audio ini, kata yang benar adalah?","options":["Buku","Pensil","Pulpen","Penghapus"],"answer":"Buku","image":null,"audio":"https://example.com/audio7.mp3"},
-  {"id":"8","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Mobil","image":"https://example.com/car.png","audio":"https://example.com/audio8.mp3"},
-  {"id":"9","type":"audio","question":"Dengar audio ini, pilih kata yang terdengar","options":["Rumah","Sekolah","Toko","Kantor"],"answer":"Sekolah","image":null,"audio":"https://example.com/audio9.mp3"},
-  {"id":"10","type":"audio","question":"Dengar audio ini, pilih bunyi yang sesuai","options":["Air","Angin","Api","Hujan"],"answer":"Hujan","image":null,"audio":"https://example.com/audio10.mp3"},
-  {"id":"11","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Kelinci","image":"https://example.com/rabbit.png","audio":"https://example.com/audio11.mp3"},
-  {"id":"12","type":"audio","question":"Dengar audio ini, kata yang terdengar adalah?","options":["Mobil","Sepeda","Motor","Truk"],"answer":"Motor","image":null,"audio":"https://example.com/audio12.mp3"},
-  {"id":"13","type":"audio","question":"Dengar audio ini, pilih kata yang benar","options":["Meja","Kursi","Lampu","Pintu"],"answer":"Lampu","image":null,"audio":"https://example.com/audio13.mp3"},
-  {"id":"14","type":"image","question":"Gambar ini menunjukkan buah apa?","options":["Apel","Jeruk","Pisang","Mangga"],"answer":"Apel","image":"https://example.com/apple.png","audio":"https://example.com/audio14.mp3"},
-  {"id":"15","type":"audio","question":"Dengar audio ini, kata yang terdengar adalah?","options":["Buku","Pensil","Pulpen","Penghapus"],"answer":"Pulpen","image":null,"audio":"https://example.com/audio15.mp3"},
-  {"id":"16","type":"audio","question":"Dengar audio ini, pilih bunyi yang sesuai","options":["Burung","Kucing","Anjing","Ayam"],"answer":"Ayam","image":null,"audio":"https://example.com/audio16.mp3"},
-  {"id":"17","type":"image","question":"Gambar ini menunjukkan alat musik apa?","options":["Gitar","Piano","Drum","Biola"],"answer":"Gitar","image":"https://example.com/guitar.png","audio":"https://example.com/audio17.mp3"},
-  {"id":"18","type":"audio","question":"Dengar audio ini, pilih kata yang terdengar","options":["Rumah","Sekolah","Toko","Kantor"],"answer":"Toko","image":null,"audio":"https://example.com/audio18.mp3"},
-  {"id":"19","type":"audio","question":"Dengar audio ini, kata yang benar adalah?","options":["Makan","Minum","Tidur","Baca"],"answer":"Tidur","image":null,"audio":"https://example.com/audio19.mp3"},
-  {"id":"20","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Truk","image":"https://example.com/truck.png","audio":"https://example.com/audio20.mp3"},
-  
-  {"id":"21","type":"text","question":"Bacalah teks: 'Kucing tidur di atas meja'. Apa yang dilakukan kucing?","options":["Tidur","Makan","Berlari","Bermain"],"answer":"Tidur","image":null,"audio":null},
-  {"id":"22","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Kucing","image":"https://example.com/cat.png","audio":null},
-  {"id":"23","type":"text","question":"Bacalah teks: 'Burung terbang di langit biru'. Apa yang dilakukan burung?","options":["Terbang","Berenang","Berlari","Tidur"],"answer":"Terbang","image":null,"audio":null},
-  {"id":"24","type":"text","question":"Bacalah teks: 'Anjing menggonggong di malam hari'. Apa yang dilakukan anjing?","options":["Menggonggong","Tidur","Makan","Berlari"],"answer":"Menggonggong","image":null,"audio":null},
-  {"id":"25","type":"image","question":"Gambar ini menunjukkan buah apa?","options":["Apel","Jeruk","Pisang","Mangga"],"answer":"Jeruk","image":"https://example.com/orange.png","audio":null},
-  {"id":"26","type":"text","question":"Bacalah teks: 'Ibu memasak di dapur'. Siapa yang memasak?","options":["Ibu","Ayah","Anak","Kucing"],"answer":"Ibu","image":null,"audio":null},
-  {"id":"27","type":"text","question":"Bacalah teks: 'Anak-anak bermain di taman'. Siapa yang bermain?","options":["Anak-anak","Orang dewasa","Kucing","Ayam"],"answer":"Anak-anak","image":null,"audio":null},
-  {"id":"28","type":"image","question":"Gambar ini menunjukkan alat musik apa?","options":["Gitar","Piano","Drum","Biola"],"answer":"Piano","image":"https://example.com/piano.png","audio":null},
-  {"id":"29","type":"text","question":"Bacalah teks: 'Mobil berjalan di jalan raya'. Apa yang berjalan?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Mobil","image":null,"audio":null},
-  {"id":"30","type":"text","question":"Bacalah teks: 'Burung berkicau di pagi hari'. Apa yang dilakukan burung?","options":["Berkicau","Tidur","Berlari","Makan"],"answer":"Berkicau","image":null,"audio":null},
-  {"id":"31","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Motor","image":"https://example.com/motor.png","audio":null},
-  {"id":"32","type":"text","question":"Bacalah teks: 'Ibu menanam bunga di taman'. Siapa yang menanam bunga?","options":["Ibu","Ayah","Anak","Kucing"],"answer":"Ibu","image":null,"audio":null},
-  {"id":"33","type":"text","question":"Bacalah teks: 'Ayah membaca koran'. Siapa yang membaca?","options":["Ayah","Ibu","Anak","Kucing"],"answer":"Ayah","image":null,"audio":null},
-  {"id":"34","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Ayam","image":"https://example.com/chicken.png","audio":null},
-  {"id":"35","type":"text","question":"Bacalah teks: 'Anak belajar menulis'. Siapa yang belajar menulis?","options":["Anak","Orang dewasa","Kucing","Ayam"],"answer":"Anak","image":null,"audio":null},
-  {"id":"36","type":"text","question":"Bacalah teks: 'Mobil berhenti di lampu merah'. Apa yang berhenti?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Mobil","image":null,"audio":null},
-  {"id":"37","type":"image","question":"Gambar ini menunjukkan buah apa?","options":["Apel","Jeruk","Pisang","Mangga"],"answer":"Pisang","image":"https://example.com/banana.png","audio":null},
-  {"id":"38","type":"text","question":"Bacalah teks: 'Ayam berlari di halaman'. Apa yang berlari?","options":["Ayam","Kucing","Anjing","Burung"],"answer":"Ayam","image":null,"audio":null},
-  {"id":"39","type":"text","question":"Bacalah teks: 'Anak-anak menari di panggung'. Apa yang dilakukan anak-anak?","options":["Menari","Tidur","Berlari","Bernyanyi"],"answer":"Menari","image":null,"audio":null},
-  {"id":"40","type":"image","question":"Gambar ini menunjukkan alat transportasi apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Sepeda","image":"https://example.com/bike.png","audio":null}
+  {
+    "id": "1",
+    "type": "listening",
+    "question": "다음 음성을 듣고 알맞은 답을 고르세요.",
+    "options": ["회사에 갑니다", "집에 갑니다", "학교에 갑니다", "병원에 갑니다"],
+    "answer": "회사에 갑니다",
+    "image": null,
+    "audio": "audio/listening_01.mp3"
+  },
+  {
+    "id": "2",
+    "type": "listening",
+    "question": "다음 음성을 듣고 여자가 하는 말을 고르세요.",
+    "options": ["커피를 마십니다", "물을 마십니다", "밥을 먹습니다", "잠을 잡니다"],
+    "answer": "커피를 마십니다",
+    "image": null,
+    "audio": "audio/listening_02.mp3"
+  },
+  {
+    "id": "3",
+    "type": "listening",
+    "question": "다음 음성을 듣고 맞는 문장을 고르세요.",
+    "options": ["지금 비가 옵니다", "오늘 날씨가 춥습니다", "내일 눈이 옵니다", "어제 비가 왔습니다"],
+    "answer": "지금 비가 옵니다",
+    "image": null,
+    "audio": "audio/listening_03.mp3"
+  },
+  {
+    "id": "4",
+    "type": "listening",
+    "question": "다음 음성을 듣고 남자가 가는 곳을 고르세요.",
+    "options": ["은행", "병원", "회사", "학교"],
+    "answer": "회사",
+    "image": null,
+    "audio": "audio/listening_04.mp3"
+  },
+  {
+    "id": "5",
+    "type": "listening",
+    "question": "다음 음성을 듣고 맞는 행동을 고르세요.",
+    "options": ["운동합니다", "공부합니다", "요리합니다", "청소합니다"],
+    "answer": "공부합니다",
+    "image": null,
+    "audio": "audio/listening_05.mp3"
+  },
+  {
+    "id": "6",
+    "type": "listening",
+    "question": "다음 음성을 듣고 여자의 기분을 고르세요.",
+    "options": ["기쁩니다", "슬픕니다", "피곤합니다", "화가 납니다"],
+    "answer": "피곤합니다",
+    "image": null,
+    "audio": "audio/listening_06.mp3"
+  },
+  {
+    "id": "7",
+    "type": "listening",
+    "question": "다음 음성을 듣고 약속 시간을 고르세요.",
+    "options": ["아침 7시", "오전 9시", "오후 3시", "저녁 8시"],
+    "answer": "오후 3시",
+    "image": null,
+    "audio": "audio/listening_07.mp3"
+  },
+  {
+    "id": "8",
+    "type": "listening",
+    "question": "다음 음성을 듣고 여자가 원하는 것을 고르세요.",
+    "options": ["물", "커피", "주스", "차"],
+    "answer": "커피",
+    "image": null,
+    "audio": "audio/listening_08.mp3"
+  },
+  {
+    "id": "9",
+    "type": "listening",
+    "question": "다음 음성을 듣고 오늘 날씨를 고르세요.",
+    "options": ["맑습니다", "비가 옵니다", "눈이 옵니다", "덥습니다"],
+    "answer": "맑습니다",
+    "image": null,
+    "audio": "audio/listening_09.mp3"
+  },
+  {
+    "id": "10",
+    "type": "listening",
+    "question": "다음 음성을 듣고 남자가 하는 말을 고르세요.",
+    "options": ["지금 갑니다", "내일 갑니다", "어제 갔습니다", "안 갑니다"],
+    "answer": "지금 갑니다",
+    "image": null,
+    "audio": "audio/listening_10.mp3"
+  },
+
+  {
+    "id": "11",
+    "type": "listening",
+    "question": "다음 음성을 듣고 장소를 고르세요.",
+    "options": ["식당", "시장", "학교", "병원"],
+    "answer": "식당",
+    "image": null,
+    "audio": "audio/listening_11.mp3"
+  },
+  {
+    "id": "12",
+    "type": "listening",
+    "question": "다음 음성을 듣고 여자가 주문한 것을 고르세요.",
+    "options": ["김밥", "라면", "불고기", "비빔밥"],
+    "answer": "라면",
+    "image": null,
+    "audio": "audio/listening_12.mp3"
+  },
+  {
+    "id": "13",
+    "type": "listening",
+    "question": "다음 음성을 듣고 남자의 직업을 고르세요.",
+    "options": ["회사원", "학생", "의사", "기사"],
+    "answer": "회사원",
+    "image": null,
+    "audio": "audio/listening_13.mp3"
+  },
+  {
+    "id": "14",
+    "type": "listening",
+    "question": "다음 음성을 듣고 여자의 취미를 고르세요.",
+    "options": ["운동", "독서", "요리", "여행"],
+    "answer": "독서",
+    "image": null,
+    "audio": "audio/listening_14.mp3"
+  },
+  {
+    "id": "15",
+    "type": "listening",
+    "question": "다음 음성을 듣고 남자가 한 말을 고르세요.",
+    "options": ["알겠습니다", "모르겠습니다", "괜찮습니다", "싫습니다"],
+    "answer": "알겠습니다",
+    "image": null,
+    "audio": "audio/listening_15.mp3"
+  },
+  {
+    "id": "16",
+    "type": "listening",
+    "question": "다음 음성을 듣고 날짜를 고르세요.",
+    "options": ["오늘", "어제", "내일", "모레"],
+    "answer": "내일",
+    "image": null,
+    "audio": "audio/listening_16.mp3"
+  },
+  {
+    "id": "17",
+    "type": "listening",
+    "question": "다음 음성을 듣고 교통수단을 고르세요.",
+    "options": ["버스", "지하철", "택시", "자전거"],
+    "answer": "지하철",
+    "image": null,
+    "audio": "audio/listening_17.mp3"
+  },
+  {
+    "id": "18",
+    "type": "listening",
+    "question": "다음 음성을 듣고 이유를 고르세요.",
+    "options": ["비가 와서", "바빠서", "아파서", "멀어서"],
+    "answer": "바빠서",
+    "image": null,
+    "audio": "audio/listening_18.mp3"
+  },
+  {
+    "id": "19",
+    "type": "listening",
+    "question": "다음 음성을 듣고 시간 표현을 고르세요.",
+    "options": ["지금", "어제", "내일", "항상"],
+    "answer": "지금",
+    "image": null,
+    "audio": "audio/listening_19.mp3"
+  },
+  {
+    "id": "20",
+    "type": "listening",
+    "question": "다음 음성을 듣고 부탁하는 말을 고르세요.",
+    "options": ["도와주세요", "고맙습니다", "죄송합니다", "안녕히 가세요"],
+    "answer": "도와주세요",
+    "image": null,
+    "audio": "audio/listening_20.mp3"
+  },
+
+  {
+    "id": "21",
+    "type": "reading",
+    "question": "다음 문장을 읽고 질문에 답하세요.\n\n\"민수는 아침에 일어나서 세수를 하고 회사에 갑니다.\" 민수는 아침에 무엇을 합니까?",
+    "options": ["운동을 합니다", "세수를 합니다", "잠을 잡니다", "책을 읽습니다"],
+    "answer": "세수를 합니다",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "22",
+    "type": "reading",
+    "question": "다음 안내문을 읽고 맞는 것을 고르세요.\n\n\"관계자 외 출입 금지\"",
+    "options": ["아무나 들어갈 수 있습니다", "관계자만 출입할 수 있습니다", "학생만 들어갈 수 있습니다", "사진 촬영이 가능합니다"],
+    "answer": "관계자만 출입할 수 있습니다",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "23",
+    "type": "reading",
+    "question": "\"이 가게는 오전 9시에 엽니다.\" 이 가게는 언제 엽니까?",
+    "options": ["오전 7시", "오전 9시", "오후 1시", "오후 6시"],
+    "answer": "오전 9시",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "24",
+    "type": "reading",
+    "question": "\"오늘은 비가 옵니다.\" 오늘 날씨는 어떻습니까?",
+    "options": ["맑습니다", "비가 옵니다", "눈이 옵니다", "덥습니다"],
+    "answer": "비가 옵니다",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "25",
+    "type": "reading",
+    "question": "\"학생은 도서관에서 조용히 해야 합니다.\" 어디에서 조용히 해야 합니까?",
+    "options": ["식당", "도서관", "운동장", "교실"],
+    "answer": "도서관",
+    "image": null,
+    "audio": null
+  },
+
+  {
+    "id": "26",
+    "type": "reading",
+    "question": "\"버스를 타고 회사에 갑니다.\" 무엇을 타고 갑니까?",
+    "options": ["지하철", "버스", "택시", "자전거"],
+    "answer": "버스",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "27",
+    "type": "reading",
+    "question": "\"점심에 김밥을 먹습니다.\" 무엇을 먹습니까?",
+    "options": ["라면", "김밥", "불고기", "비빔밥"],
+    "answer": "김밥",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "28",
+    "type": "reading",
+    "question": "\"일요일에 쉽니다.\" 언제 쉽니까?",
+    "options": ["토요일", "월요일", "일요일", "금요일"],
+    "answer": "일요일",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "29",
+    "type": "reading",
+    "question": "\"친구를 만납니다.\" 누구를 만납니까?",
+    "options": ["가족", "선생님", "친구", "회사원"],
+    "answer": "친구",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "30",
+    "type": "reading",
+    "question": "\"한국어를 공부합니다.\" 무엇을 공부합니까?",
+    "options": ["영어", "중국어", "일본어", "한국어"],
+    "answer": "한국어",
+    "image": null,
+    "audio": null
+  },
+
+  {
+    "id": "31",
+    "type": "reading",
+    "question": "\"저녁에 운동을 합니다.\" 언제 운동을 합니까?",
+    "options": ["아침", "점심", "저녁", "밤"],
+    "answer": "저녁",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "32",
+    "type": "reading",
+    "question": "\"물 한 잔 주세요.\" 무엇을 주세요?",
+    "options": ["커피", "주스", "물", "차"],
+    "answer": "물",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "33",
+    "type": "reading",
+    "question": "\"문을 닫습니다.\" 무엇을 닫습니까?",
+    "options": ["창문", "문", "책", "가방"],
+    "answer": "문",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "34",
+    "type": "reading",
+    "question": "\"버스 정류장은 앞에 있습니다.\" 무엇이 앞에 있습니까?",
+    "options": ["은행", "병원", "버스 정류장", "학교"],
+    "answer": "버스 정류장",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "35",
+    "type": "reading",
+    "question": "\"사진을 찍으면 안 됩니다.\" 무엇을 하면 안 됩니까?",
+    "options": ["들어가기", "사진 찍기", "걷기", "말하기"],
+    "answer": "사진 찍기",
+    "image": null,
+    "audio": null
+  },
+
+  {
+    "id": "36",
+    "type": "reading",
+    "question": "\"일을 끝내고 집에 갑니다.\" 어디에 갑니까?",
+    "options": ["회사", "학교", "집", "병원"],
+    "answer": "집",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "37",
+    "type": "reading",
+    "question": "\"한국 음식이 맛있습니다.\" 무엇이 맛있습니까?",
+    "options": ["한국 음식", "중국 음식", "일본 음식", "서양 음식"],
+    "answer": "한국 음식",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "38",
+    "type": "reading",
+    "question": "\"지금 시간이 없습니다.\" 무엇이 없습니까?",
+    "options": ["돈", "시간", "친구", "일"],
+    "answer": "시간",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "39",
+    "type": "reading",
+    "question": "\"약을 먹어야 합니다.\" 무엇을 해야 합니까?",
+    "options": ["쉬어야 합니다", "약을 먹어야 합니다", "운동해야 합니다", "일해야 합니다"],
+    "answer": "약을 먹어야 합니다",
+    "image": null,
+    "audio": null
+  },
+  {
+    "id": "40",
+    "type": "reading",
+    "question": "\"여기에서 담배를 피우면 안 됩니다.\" 무엇을 하면 안 됩니까?",
+    "options": ["담배를 피우기", "이야기하기", "사진 찍기", "걷기"],
+    "answer": "담배를 피우기",
+    "image": null,
+    "audio": null
+  }
 ]
