@@ -45,7 +45,7 @@ h1,h2{
 
 /* ================= BOX NOMOR ================= */
 .box{
-  width:48px;
+  width:60px;
   height:48px;
   display:flex;
   align-items:center;
@@ -280,6 +280,7 @@ h1,h2{
 .login-card button:hover{
   background:#1e40af;
 }
+
 
 
 
