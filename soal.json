@@ -20,7 +20,7 @@
   {"id":"19","type":"audio","question":"Dengar audio ini, kata yang benar adalah?","options":["Makan","Minum","Tidur","Baca"],"answer":"Tidur","image":null,"audio":"https://example.com/audio19.mp3"},
   {"id":"20","type":"image","question":"Gambar ini menunjukkan kendaraan apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Truk","image":"https://example.com/truck.png","audio":"https://example.com/audio20.mp3"},
 
-  {"id":"21","type":"text","question":"Bacalah teks: 'Kucing tidur di atas meja'. Apa yang dilakukan kucing?","options":["Tidur","Makan","Berlari","Bermain"],"answer":"Tidur","image":null,"audio":null},
+  {"id":"21","type":"text","question":"Bacalah teks: 'bade kamana atuh bapak ibu teh?","options":["modol","sare","diuk","bahgoy"],"answer":"Tidur","image":null,"audio":null},
   {"id":"22","type":"image","question":"Gambar ini menunjukkan hewan apa?","options":["Kucing","Anjing","Kelinci","Ayam"],"answer":"Kucing","image":"https://example.com/cat.png","audio":null},
   {"id":"23","type":"text","question":"Bacalah teks: 'Burung terbang di langit biru'. Apa yang dilakukan burung?","options":["Terbang","Berenang","Berlari","Tidur"],"answer":"Terbang","image":null,"audio":null},
   {"id":"24","type":"text","question":"Bacalah teks: 'Anjing menggonggong di malam hari'. Apa yang dilakukan anjing?","options":["Menggonggong","Tidur","Makan","Berlari"],"answer":"Menggonggong","image":null,"audio":null},
@@ -41,6 +41,7 @@
   {"id":"39","type":"text","question":"Bacalah teks: 'Anak-anak menari di panggung'. Apa yang dilakukan anak-anak?","options":["Menari","Tidur","Berlari","Bernyanyi"],"answer":"Menari","image":null,"audio":null},
   {"id":"40","type":"image","question":"Gambar ini menunjukkan alat transportasi apa?","options":["Mobil","Motor","Sepeda","Truk"],"answer":"Sepeda","image":"https://example.com/bike.png","audio":null}
 ]
+
 
 
 
