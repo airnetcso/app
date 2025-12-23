@@ -1,7 +1,7 @@
 const users = [
-  { username: "andis", password: "1234" },
-  { username: "budis", password: "5678" },
-  { username: "sitis", password: "1111" }
+  { username: "and", password: "1234" },
+  { username: "bud", password: "5678" },
+  { username: "sit", password: "1111" }
 ];
 
 // kalau sudah login, langsung ke soal
