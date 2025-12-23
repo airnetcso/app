@@ -1,4 +1,211 @@
-/* ================= LOGIN PAGE ================= */
+/* ================= GLOBAL ================= */
+body{
+  font-family:sans-serif;
+  margin:0;
+  padding:0;
+  background:#f5f1e6; /* krem lembut (halaman soal) */
+  min-height:100vh;
+}
+
+h1,h2{
+  text-align:center;
+  margin:6px 0;
+}
+
+/* ================= TIMER ================= */
+#timer{
+  position:sticky;
+  top:0;
+  background:#2b2b2b;
+  color:#fff;
+  padding:12px;
+  font-size:18px;
+  text-align:center;
+  z-index:20;
+}
+
+/* ================= CONTAINER ================= */
+.container{
+  margin:12px;
+  margin-bottom:100px;
+  background:#ffffff;
+  border-radius:14px;
+  padding:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ================= GRID SOAL ================= */
+.grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px;
+  margin-top:10px;
+}
+
+/* ================= BOX NOMOR ================= */
+.box{
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#0a2a66,#123b8c);
+  color:#fff;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.box:hover{
+  transform:scale(1.05);
+}
+
+.box.reading{
+  background:linear-gradient(135deg,#1f5f3b,#2e7d4f);
+}
+
+.box.answered{
+  background:#cfcfcf;
+  color:#000;
+  cursor:default;
+  transform:none;
+}
+
+/* ================= MODAL ================= */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.65);
+  z-index:50;
+
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:10px;
+  box-sizing:border-box;
+}
+
+/* ================= MODAL CONTENT ================= */
+.modal-content{
+  background:#ffffff;
+  border-radius:14px;
+  padding:20px;
+  width:100%;
+  max-width:500px;
+  box-sizing:border-box;
+  overflow:auto;
+  margin-top:80px; /* supaya tidak ketutup timer */
+
+  animation:fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ================= CARD SOAL ================= */
+.question-card{
+  background:#ffffff;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* teks soal */
+.question-text{
+  text-align:center;
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+/* media soal */
+.question-media{
+  text-align:center;
+  margin:10px 0;
+}
+
+.question-media img{
+  max-width:100%;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.question-media audio{
+  width:100%;
+  margin-bottom:10px;
+}
+
+/* ================= OPSI JAWABAN ================= */
+#options button{
+  margin:8px 0;
+  padding:12px;
+  width:100%;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s;
+  background:#f4f6f8;
+}
+
+#options button:hover{
+  background:#e5e7eb;
+}
+
+#options button.selected{
+  background:#dbeafe;
+  border:2px solid #2563eb;
+  color:#1e3a8a;
+  font-weight:bold;
+}
+
+/* ================= CONTROL BAWAH ================= */
+.controls{
+  position:fixed;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+  z-index:30;
+}
+
+.controls button{
+  padding:10px 16px;
+  font-size:15px;
+  border:none;
+  border-radius:10px;
+  background:#0b5ed7;
+  color:#ffffff;
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+  transition:0.2s;
+}
+
+.controls button:hover{
+  background:#0949a5;
+}
+
+/* ================= HASIL ================= */
+#result{
+  text-align:center;
+  font-size:22px;
+  margin:20px;
+  font-weight:bold;
+}
+
+/* ================================================= */
+/* ================= LOGIN PAGE ==================== */
+/* ================================================= */
 
 .login-page{
   background:url("../img/bg.jpg") no-repeat center center/cover;
@@ -9,6 +216,7 @@
   position:relative;
 }
 
+/* overlay gelap */
 .login-overlay{
   position:absolute;
   top:0;
@@ -18,59 +226,48 @@
   background:rgba(0,0,0,0.45);
 }
 
-/* CARD LOGIN */
+/* card login */
 .login-card{
   position:relative;
   background:#ffffff;
   width:90%;
   max-width:360px;
-  padding:28px 24px;
-  border-radius:18px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.3);
+  padding:25px 22px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
   text-align:center;
   z-index:2;
 }
 
-/* JUDUL */
 .login-card h2{
-  margin:0 0 6px;
-  font-size:22px;
+  margin:5px 0;
 }
 
 .login-card p{
   font-size:14px;
   color:#555;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
-/* INPUT BESAR & TENGAH */
+/* input login */
 .login-card input{
   width:100%;
-  padding:14px;
-  margin-bottom:14px;
-  border-radius:12px;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:10px;
   border:1px solid #ddd;
-  font-size:16px;
-  text-align:center;
+  font-size:15px;
 }
 
-/* FOCUS */
-.login-card input:focus{
-  outline:none;
-  border-color:#2563eb;
-  box-shadow:0 0 0 2px rgba(37,99,235,0.15);
-}
-
-/* TOMBOL MASUK */
+/* tombol login */
 .login-card button{
   width:100%;
-  padding:14px;
-  margin-top:6px;
+  padding:12px;
   border:none;
-  border-radius:14px;
+  border-radius:12px;
   background:#2563eb;
   color:#fff;
-  font-size:17px;
+  font-size:16px;
   font-weight:bold;
   cursor:pointer;
   transition:0.2s;
