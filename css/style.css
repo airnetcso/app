@@ -208,7 +208,7 @@ h1,h2{
 /* ================================================= */
 
 .login-page{
-  background:url("../img/bg.jpg") no-repeat center center/cover;
+  background:url("https://raw.githubusercontent.com/airnetcso/app/main/image/01.jpg") no-repeat center center/cover;
   min-height:100vh;
   display:flex;
   justify-content:center;
@@ -251,12 +251,12 @@ h1,h2{
 
 /* input login */
 .login-card input{
-  width:90%;
+  width:92%;
   padding:12px;
   margin-bottom:12px;
   border-radius:10px;
   border:1px solid #ddd;
-  font-size:13px;
+  font-size:16px;
 }
 
 /* tombol login */
