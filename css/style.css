@@ -251,12 +251,12 @@ h1,h2{
 
 /* input login */
 .login-card input{
-  width:100%;
+  width:80%;
   padding:12px;
   margin-bottom:12px;
   border-radius:10px;
   border:1px solid #ddd;
-  font-size:15px;
+  font-size:12px;
 }
 
 /* tombol login */
@@ -276,3 +276,4 @@ h1,h2{
 .login-card button:hover{
   background:#1e40af;
 }
+
