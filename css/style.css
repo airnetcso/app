@@ -1,4 +1,4 @@
-/* ===== GLOBAL ===== */
+/* ================= GLOBAL ================= */
 body{
   font-family:sans-serif;
   margin:0;
@@ -9,33 +9,43 @@ body{
 
 h1,h2{
   text-align:center;
-  margin:5px 0;
+  margin:6px 0;
 }
 
-/* ===== TIMER ===== */
+/* ================= TIMER ================= */
 #timer{
   position:sticky;
   top:0;
   background:#2b2b2b;
   color:#fff;
-  padding:10px;
+  padding:12px;
   font-size:18px;
   text-align:center;
-  z-index:10;
+  z-index:20;
 }
 
-/* ===== GRID SOAL ===== */
+/* ================= CONTAINER ================= */
+.container{
+  margin:12px;
+  margin-bottom:100px;
+  background:#ffffff;
+  border-radius:14px;
+  padding:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ================= GRID SOAL ================= */
 .grid{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
   gap:6px;
-  margin:10px;
+  margin-top:10px;
 }
 
-/* ===== KOTAK NOMOR SOAL ===== */
+/* ================= BOX NOMOR ================= */
 .box{
-  width:48px;               /* sedikit diperkecil */
+  width:48px;
   height:48px;
   display:flex;
   align-items:center;
@@ -53,13 +63,12 @@ h1,h2{
   transform:scale(1.05);
 }
 
-/* ===== READING ===== */
+/* reading */
 .box.reading{
   background:linear-gradient(135deg,#1f5f3b,#2e7d4f); /* hijau dop */
-  color:#fff;
 }
 
-/* ===== SUDAH DIJAWAB ===== */
+/* sudah dijawab */
 .box.answered{
   background:#cfcfcf;
   color:#000;
@@ -67,22 +76,95 @@ h1,h2{
   transform:none;
 }
 
-/* ===== CONTAINER ===== */
-.container{
-  margin-bottom:90px;
-  background:#ffffff;
-  border-radius:14px;
-  padding:15px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  margin:10px;
-}
-
-/* ===== MODAL ===== */
+/* ================= MODAL ================= */
 .modal{
   display:none;
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  height:100
+  height:100%;
+  background:rgba(0,0,0,0.65);
+  z-index:50;
 
+  /* penting supaya soal tidak nempel atas */
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:10px;
+  box-sizing:border-box;
+}
+
+/* ================= MODAL CONTENT ================= */
+.modal-content{
+  background:#ffffff;
+  border-radius:14px;
+  padding:20px;
+  width:100%;
+  max-width:500px;
+  box-sizing:border-box;
+  overflow:auto;
+
+  /* FIX UTAMA SOAL KETUTUP TIMER */
+  margin-top:80px;
+}
+
+/* ================= TEKS SOAL ================= */
+.modal-content h3,
+.modal-content p{
+  text-align:center;
+  line-height:1.6;
+  margin:12px 0;
+  padding:0 10px;
+}
+
+/* ================= OPSI JAWABAN ================= */
+#options button{
+  margin:8px 0;
+  padding:12px;
+  width:100%;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+#options button:hover{
+  background:#eeeeee;
+}
+
+/* ================= CONTROL BAWAH ================= */
+.controls{
+  position:fixed;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+  z-index:30;
+}
+
+.controls button{
+  padding:10px 16px;
+  font-size:15px;
+  border:none;
+  border-radius:10px;
+  background:#0b5ed7; /* biru dop */
+  color:#ffffff;
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+  transition:0.2s;
+}
+
+.controls button:hover{
+  background:#0949a5;
+}
+
+/* ================= HASIL ================= */
+#result{
+  text-align:center;
+  font-size:22px;
+  margin:20px;
+  font-weight:bold;
+}
