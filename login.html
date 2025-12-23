@@ -4,34 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Siswa</title>
-
-  <!-- CSS utama -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="login-page">
 
-  <div class="login-wrapper">
+  <div class="login-overlay"></div>
+
+  <div class="login-card">
     <h2>Login Siswa</h2>
     <p>Silakan masuk untuk mengerjakan soal</p>
 
-    <input 
-      type="text" 
-      id="username" 
-      placeholder="Username"
-      autocomplete="off"
-    >
-
-    <input 
-      type="password" 
-      id="password" 
-      placeholder="Password"
-    >
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
 
     <button onclick="login()">Masuk</button>
   </div>
 
-  <!-- JS login -->
   <script src="js/login.js"></script>
-
 </body>
 </html>
