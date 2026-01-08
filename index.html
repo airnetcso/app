@@ -1,48 +1,307 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Latihan Soal Mobile</title>
-<link rel="stylesheet" href="css/style.css">
-<script>
-if (localStorage.getItem("login") !== "true") {
-location.href = "login.html";
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Membaca Korea 🇰🇷</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1 { color: #ff4500; margin-bottom: 10px; }
+        h2 { color: #333; }
+
+        input, button {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover { opacity: 0.9; }
+
+        #login-btn { background: #4285f4; }
+        .level-btn { background: #9c27b0; width: 200px; }
+        #start-btn { background: #ff9800; }
+        #mic-btn { background: #ff5722; }
+        #next-btn { background: #4caf50; }
+        #logout-btn { background: #f44336; font-size: 14px; padding: 8px 16px; }
+
+        .text {
+            font-size: 48px;
+            margin: 40px;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            min-height: 100px;
+        }
+
+        .correct { background: #90ee90; color: green; border-color: green; }
+
+        #status { min-height: 30px; margin-top: 20px; font-weight: bold; }
+        .hint { font-size: 18px; color: #555; margin: 20px 0; }
+
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Halaman Login -->
+        <div id="login-page">
+            <h1>Selamat Datang! 🇰🇷</h1>
+            <p>Masuk dulu ya biar bisa latihan membaca Hangul</p>
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button id="login-btn">Login</button>
+            <p style="color: #666; font-size: 14px;">Hint: username apa aja, password: <strong>korea123</strong></p>
+        </div>
 
-<h1>Latihan Soal</h1>
-<div id="timer">Waktu: 50:00</div>
+        <!-- Pilih Level -->
+        <div id="level-page" class="hidden">
+            <h1>Halo, <span id="welcome-user"></span>! 👋</h1>
+            <h2>Pilih Level Latihan</h2>
+            <button class="level-btn" data-level="pemula">Pemula</button><br>
+            <button class="level-btn" data-level="sedang">Sedang</button><br>
+            <button class="level-btn" data-level="mahir">Mahir</button><br><br>
+            <button id="logout-btn">Logout</button>
+        </div>
 
-<div class="container">
-  <h2>Listening</h2>
-  <div id="listeningGrid" class="grid"></div>
+        <!-- Halaman Latihan -->
+        <div id="practice-page" class="hidden">
+            <h1>Latihan Membaca Hangul - <span id="current-level"></span></h1>
+            <p>Baca teks di bawah ini keras-keras, lalu klik mic untuk cek!</p>
+            
+            <div id="text-display" class="text">Pilih level dulu ya!</div>
+            <div id="hint" class="hint"></div>
+            
+            <button id="start-btn">Mulai Latihan</button>
+            <button id="mic-btn" disabled>🎤 Baca Sekarang</button>
+            <button id="next-btn" disabled>Selanjutnya</button>
+            <br><br>
+            <button id="back-btn">Kembali ke Pilih Level</button>
+            
+            <p id="status"></p>
+        </div>
+    </div>
 
-  <h2>Reading</h2>
-  <div id="readingGrid" class="grid"></div>
-</div>
+    <script>
+        // Data latihan berdasarkan level
+        const dataLatihan = {
+            pemula: [
+                {text: "안녕", hint: "Annyeong (Halo santai)"},
+                {text: "감사", hint: "Gamsa (Terima kasih santai)"},
+                {text: "사랑해", hint: "Saranghae (Aku cinta kamu santai)"},
+                {text: "밥", hint: "Bab (Nasi/Makan)"},
+                {text: "물", hint: "Mul (Air)"},
+                {text: "좋아", hint: "Joa (Suka)"},
+                {text: "미안", hint: "Mian (Maaf santai)"}
+            ],
+            sedang: [
+                {text: "안녕하세요", hint: "Annyeonghaseyo (Halo formal)"},
+                {text: "감사합니다", hint: "Gamsahamnida (Terima kasih formal)"},
+                {text: "사랑해요", hint: "Saranghaeyo (Aku cinta kamu formal)"},
+                {text: "밥 먹었어요?", hint: "Bab meogeosseoyo? (Sudah makan?)"},
+                {text: "이름이 뭐예요?", hint: "Ireumi mwoyeyo? (Siapa nama kamu?)"},
+                {text: "반갑습니다", hint: "Bangapseumnida (Senang bertemu)"},
+                {text: "어디 살아요?", hint: "Eodi sarayo? (Tinggal di mana?)"}
+            ],
+            mahir: [
+                {text: "오늘 날씨가 정말 좋네요", hint: "Oneul nalssiga jeongmal jotneyo"},
+                {text: "저는 매일 한국어를 공부해요", hint: "Jeoneun maeil hangugeoreul gongbuhaeyo"},
+                {text: "한국 드라마를 좋아하세요?", hint: "Hanguk deuramareul joahaseyo?"},
+                {text: "주말에 뭐 할 거예요?", hint: "Jumare mwo hal geoyeyo?"},
+                {text: "이 음식은 정말 맛있어요", hint: "I eumsigeun jeongmal masisseoyo"},
+                {text: "다음에 또 만나요", hint: "Daeume tto mannayo"}
+            ]
+        };
 
-<div class="controls">
-  <button id="submitBtn">Submit Jawaban</button>
-  <button id="reviewBtn">Review Jawaban</button>
-  <button id="resetBtn">Ulangi</button>
-</div>
+        // Element
+        const loginPage = document.getElementById('login-page');
+        const levelPage = document.getElementById('level-page');
+        const practicePage = document.getElementById('practice-page');
+        const welcomeUser = document.getElementById('welcome-user');
+        const currentLevelDisplay = document.getElementById('current-level');
 
-<div id="result"></div>
+        // Login
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
 
-<!-- Modal -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span id="closeModal" onclick="closeModal()">X</span>
-    <div id="questionText"></div>
-    <div id="media"></div>
-    <div id="options"></div>
-  </div>
-</div>
+            if (username && password === 'korea123') {
+                welcomeUser.textContent = username;
+                loginPage.classList.add('hidden');
+                levelPage.classList.remove('hidden');
+            } else {
+                alert('Password salah bro! Coba: korea123');
+            }
+        });
 
-<script src="js/main.js"></script>
+        // Pilih Level
+        document.querySelectorAll('.level-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const level = btn.dataset.level;
+                currentLevel = level;
+                currentLevelDisplay.textContent = level.charAt(0).toUpperCase() + level.slice(1);
+                exercises = dataLatihan[level];
+                currentIndex = 0;
+
+                levelPage.classList.add('hidden');
+                practicePage.classList.remove('hidden');
+                resetPractice();
+            });
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            levelPage.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+
+        // Kembali ke level
+        document.getElementById('back-btn').addEventListener('click', () => {
+            practicePage.classList.add('hidden');
+            levelPage.classList.remove('hidden');
+        });
+
+        // Latihan variables
+        let exercises = [];
+        let currentIndex = 0;
+        let currentLevel = '';
+        let recognition;
+
+        const textDisplay = document.getElementById('text-display');
+        const hintDisplay = document.getElementById('hint');
+        const startBtn = document.getElementById('start-btn');
+        const micBtn = document.getElementById('mic-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const status = document.getElementById('status');
+
+        function resetPractice() {
+            textDisplay.textContent = 'Klik "Mulai Latihan" untuk memulai';
+            hintDisplay.textContent = '';
+            status.textContent = '';
+            startBtn.disabled = false;
+            micBtn.disabled = true;
+            nextBtn.disabled = true;
+            textDisplay.classList.remove('correct');
+        }
+
+        startBtn.addEventListener('click', () => {
+            currentIndex = 0;
+            loadExercise();
+            startBtn.disabled = true;
+            micBtn.disabled = false;
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex >= exercises.length) {
+                textDisplay.textContent = 'Selamat! Kamu sudah selesai level ini 🎉';
+                hintDisplay.textContent = '';
+                textDisplay.classList.remove('correct');
+                micBtn.disabled = true;
+                nextBtn.disabled = true;
+                status.textContent = 'Kerja bagus bro! Pilih level lain atau logout.';
+                return;
+            }
+            loadExercise();
+        });
+
+        function loadExercise() {
+            textDisplay.textContent = exercises[currentIndex].text;
+            hintDisplay.textContent = `Hint: ${exercises[currentIndex].hint}`;
+            textDisplay.classList.remove('correct');
+            status.textContent = '';
+            nextBtn.disabled = true;
+        }
+
+        // Speech Recognition
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'ko-KR';
+            recognition.continuous = false;
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript.trim();
+                const target = exercises[currentIndex].text;
+
+                const normTranscript = transcript.replace(/\s/g, '').toLowerCase();
+                const normTarget = target.replace(/\s/g, '').toLowerCase();
+
+                if (normTranscript.includes(normTarget) || levenshteinDistance(normTranscript, normTarget) <= 4) {
+                    textDisplay.classList.add('correct');
+                    status.textContent = 'Betul banget! Mantap 🔥';
+                    status.style.color = 'green';
+                    nextBtn.disabled = false;
+                } else {
+                    status.textContent = `Kurang tepat. Kamu bilang: "${transcript}"`;
+                    status.style.color = 'red';
+                }
+            };
+
+            recognition.onerror = () => {
+                status.textContent = 'Mic error, coba lagi ya!';
+                status.style.color = 'red';
+                micBtn.textContent = '🎤 Baca Sekarang';
+            };
+
+            recognition.onend = () => {
+                micBtn.textContent = '🎤 Baca Sekarang';
+            };
+        } else {
+            status.textContent = 'Browser tidak support mic. Pakai Chrome ya bro!';
+            status.style.color = 'red';
+            micBtn.disabled = true;
+        }
+
+        micBtn.addEventListener('click', () => {
+            if (recognition) {
+                recognition.start();
+                micBtn.textContent = '🎤 Sedang Mendengar...';
+                status.textContent = 'Baca sekarang!';
+                status.style.color = '#ff9800';
+            }
+        });
+
+        function levenshteinDistance(a, b) {
+            const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
+            for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+            for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+            for (let j = 1; j <= b.length; j++) {
+                for (let i = 1; i <= a.length; i++) {
+                    matrix[j][i] = a[i-1] === b[j-1] ? matrix[j-1][i-1] : Math.min(
+                        matrix[j-1][i-1] + 1,
+                        matrix[j][i-1] + 1,
+                        matrix[j-1][i] + 1
+                    );
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+    </script>
 </body>
 </html>
-
