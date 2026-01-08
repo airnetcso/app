@@ -3,289 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Membaca Korea 🇰🇷</title>
+    <title>Latihan Baca Korea 🇰🇷</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f0f8ff;
-            text-align: center;
-            padding: 50px;
             margin: 0;
+            padding: 20px;
+            text-align: center;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 100%;
             margin: auto;
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        h1 { color: #ff4500; margin-bottom: 10px; }
-        h2 { color: #333; }
+        h1 { color: #ff4500; font-size: 28px; margin: 10px 0; }
+        h2 { font-size: 24px; }
 
         input, button {
-            padding: 12px 20px;
-            margin: 10px;
-            font-size: 18px;
-            border-radius: 8px;
+            width: 90%;
+            padding: 15px;
+            margin: 15px auto;
+            font-size: 20px;
+            border-radius: 10px;
             border: 1px solid #ccc;
         }
 
         button {
-            cursor: pointer;
-            border: none;
+            background: #4285f4;
             color: white;
-            transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         button:hover { opacity: 0.9; }
 
-        #login-btn { background: #4285f4; }
-        .level-btn { background: #9c27b0; width: 200px; }
+        .level-btn { background: #9c27b0; margin: 10px auto; display: block; }
         #start-btn { background: #ff9800; }
-        #mic-btn { background: #ff5722; }
+        #mic-btn { background: #ff5722; font-size: 24px; padding: 20px; }
         #next-btn { background: #4caf50; }
-        #logout-btn { background: #f44336; font-size: 14px; padding: 8px 16px; }
+        #back-btn, #guide-btn, #logout-btn { background: #666; font-size: 16px; }
 
-        .text {
+        .text-display {
             font-size: 48px;
-            margin: 40px;
+            margin: 30px auto;
             padding: 20px;
-            border: 2px dashed #ccc;
-            border-radius: 10px;
-            min-height: 100px;
+            min-height: 120px;
+            word-wrap: break-word;
+            line-height: 1.4;
         }
 
-        .correct { background: #90ee90; color: green; border-color: green; }
+        .syllable {
+            display: inline-block;
+            padding: 5px 8px;
+            margin: 5px;
+            border-radius: 8px;
+            background: #eee;
+            transition: all 0.3s;
+        }
 
-        #status { min-height: 30px; margin-top: 20px; font-weight: bold; }
-        .hint { font-size: 18px; color: #555; margin: 20px 0; }
+        .correct { background: #90ee90 !important; color: green; }
+        .incorrect { background: #ffcccb !important; color: red; }
+
+        #status { font-size: 20px; font-weight: bold; min-height: 50px; margin: 20px; }
+        .hint { font-size: 20px; color: #555; margin: 20px; }
 
         .hidden { display: none; }
+
+        .guide-content {
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Halaman Login -->
+        <!-- Login -->
         <div id="login-page">
             <h1>Selamat Datang! 🇰🇷</h1>
-            <p>Masuk dulu ya biar bisa latihan membaca Hangul</p>
-            <input type="text" id="username" placeholder="Username" required><br>
-            <input type="password" id="password" placeholder="Password" required><br>
+            <p>Masuk dulu ya</p>
+            <input type="text" id="username" placeholder="Username"><br>
+            <input type="password" id="password" placeholder="Password"><br>
             <button id="login-btn">Login</button>
-            <p style="color: #666; font-size: 14px;">Hint: username apa aja, password: <strong>korea123</strong></p>
+            <p style="font-size:14px;">Password: <strong>korea123</strong></p>
         </div>
 
-        <!-- Pilih Level -->
+        <!-- Level -->
         <div id="level-page" class="hidden">
             <h1>Halo, <span id="welcome-user"></span>! 👋</h1>
-            <h2>Pilih Level Latihan</h2>
-            <button class="level-btn" data-level="pemula">Pemula</button><br>
-            <button class="level-btn" data-level="sedang">Sedang</button><br>
-            <button class="level-btn" data-level="mahir">Mahir</button><br><br>
+            <h2>Pilih Level</h2>
+            <button class="level-btn" data-level="pemula">Pemula</button>
+            <button class="level-btn" data-level="sedang">Sedang</button>
+            <button class="level-btn" data-level="mahir">Mahir</button>
+            <button id="guide-btn">Panduan Cara Baca Hangul</button>
             <button id="logout-btn">Logout</button>
         </div>
 
-        <!-- Halaman Latihan -->
+        <!-- Guide -->
+        <div id="guide-page" class="hidden">
+            <h1>Panduan Cara Baca Hangul 📖</h1>
+            <div class="guide-content">
+                <p><strong>Aturan Dasar:</strong></p>
+                <ul>
+                    <li>Baca dari kiri ke kanan, atas ke bawah dalam setiap blok syllable.</li>
+                    <li>Consonant awal + vowel = dasar syllable.</li>
+                    <li>Batchim (consonant bawah) pindah ke syllable berikutnya kalau berikutnya mulai vowel.</li>
+                    <li>Aspirated (ㅋ,ㅌ,ㅍ,ㅊ): keluarin napas kuat.</li>
+                    <li>Tense (ㄲ,ㄸ,ㅃ,ㅆ,ㅉ): tegang, pendek, kuat.</li>
+                    <li>ㄹ: seperti L atau R ringan (antara vowel seperti 'r' lembut).</li>
+                    <li>ㅎ sering hilang atau lembut di akhir.</li>
+                </ul>
+                <p><strong>Tips Pemula:</strong> Baca lambat per blok, dengar native speaker (YouTube/TalkToMeInKorean). Praktek tiap hari!</p>
+                <p>Fighting! 💪</p>
+            </div>
+            <button id="back-from-guide">Kembali</button>
+        </div>
+
+        <!-- Practice -->
         <div id="practice-page" class="hidden">
-            <h1>Latihan Membaca Hangul - <span id="current-level"></span></h1>
-            <p>Baca teks di bawah ini keras-keras, lalu klik mic untuk cek!</p>
-            
-            <div id="text-display" class="text">Pilih level dulu ya!</div>
+            <h1>Latihan - <span id="current-level"></span></h1>
+            <div id="text-display" class="text-display"></div>
             <div id="hint" class="hint"></div>
-            
             <button id="start-btn">Mulai Latihan</button>
             <button id="mic-btn" disabled>🎤 Baca Sekarang</button>
             <button id="next-btn" disabled>Selanjutnya</button>
-            <br><br>
-            <button id="back-btn">Kembali ke Pilih Level</button>
-            
+            <button id="back-btn">Kembali ke Level</button>
+            <button id="guide-btn2">Panduan Cara Baca</button>
             <p id="status"></p>
         </div>
     </div>
 
     <script>
-        // Data latihan berdasarkan level
         const dataLatihan = {
             pemula: [
-                {text: "안녕", hint: "Annyeong (Halo santai)"},
-                {text: "감사", hint: "Gamsa (Terima kasih santai)"},
-                {text: "사랑해", hint: "Saranghae (Aku cinta kamu santai)"},
-                {text: "밥", hint: "Bab (Nasi/Makan)"},
-                {text: "물", hint: "Mul (Air)"},
-                {text: "좋아", hint: "Joa (Suka)"},
-                {text: "미안", hint: "Mian (Maaf santai)"}
+                {text: "안녕", syllables: ["안","녕"], hint: "Annyeong (Halo santai)"},
+                {text: "감사", syllables: ["감","사"], hint: "Gamsa (Terima kasih santai)"},
+                {text: "밥", syllables: ["밥"], hint: "Bab (Makan)"},
+                {text: "물", syllables: ["물"], hint: "Mul (Air)"}
             ],
             sedang: [
-                {text: "안녕하세요", hint: "Annyeonghaseyo (Halo formal)"},
-                {text: "감사합니다", hint: "Gamsahamnida (Terima kasih formal)"},
-                {text: "사랑해요", hint: "Saranghaeyo (Aku cinta kamu formal)"},
-                {text: "밥 먹었어요?", hint: "Bab meogeosseoyo? (Sudah makan?)"},
-                {text: "이름이 뭐예요?", hint: "Ireumi mwoyeyo? (Siapa nama kamu?)"},
-                {text: "반갑습니다", hint: "Bangapseumnida (Senang bertemu)"},
-                {text: "어디 살아요?", hint: "Eodi sarayo? (Tinggal di mana?)"}
+                {text: "안녕하세요", syllables: ["안","녕","하","세","요"], hint: "Annyeonghaseyo (Halo formal)"},
+                {text: "감사합니다", syllables: ["감","사","합","니","다"], hint: "Gamsahamnida (Terima kasih formal)"},
+                {text: "밥 먹었어요?", syllables: ["밥","먹","었","어","요?"], hint: "Bab meogeosseoyo?"}
             ],
             mahir: [
-                {text: "오늘 날씨가 정말 좋네요", hint: "Oneul nalssiga jeongmal jotneyo"},
-                {text: "저는 매일 한국어를 공부해요", hint: "Jeoneun maeil hangugeoreul gongbuhaeyo"},
-                {text: "한국 드라마를 좋아하세요?", hint: "Hanguk deuramareul joahaseyo?"},
-                {text: "주말에 뭐 할 거예요?", hint: "Jumare mwo hal geoyeyo?"},
-                {text: "이 음식은 정말 맛있어요", hint: "I eumsigeun jeongmal masisseoyo"},
-                {text: "다음에 또 만나요", hint: "Daeume tto mannayo"}
+                {text: "오늘 날씨가 정말 좋네요", syllables: ["오","늘","날","씨","가","정","말","좋","네","요"], hint: "Oneul nalssiga jeongmal jotneyo"},
+                {text: "저는 매일 한국어를 공부해요", syllables: ["저","는","매","일","한","국","어","를","공","부","해","요"], hint: "Jeoneun maeil hangugeoreul gongbuhaeyo"},
+                {text: "한국 드라마를 좋아하세요?", syllables: ["한","국","드","라","마","를","좋","아","하","세","요?"], hint: "Hanguk deuramareul joahaseyo?"}
             ]
         };
 
-        // Element
-        const loginPage = document.getElementById('login-page');
-        const levelPage = document.getElementById('level-page');
-        const practicePage = document.getElementById('practice-page');
+        // Elements
+        const pages = {
+            login: document.getElementById('login-page'),
+            level: document.getElementById('level-page'),
+            guide: document.getElementById('guide-page'),
+            practice: document.getElementById('practice-page')
+        };
         const welcomeUser = document.getElementById('welcome-user');
         const currentLevelDisplay = document.getElementById('current-level');
-
-        // Login
-        document.getElementById('login-btn').addEventListener('click', () => {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-
-            if (username && password === 'korea123') {
-                welcomeUser.textContent = username;
-                loginPage.classList.add('hidden');
-                levelPage.classList.remove('hidden');
-            } else {
-                alert('Password salah bro! Coba: korea123');
-            }
-        });
-
-        // Pilih Level
-        document.querySelectorAll('.level-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const level = btn.dataset.level;
-                currentLevel = level;
-                currentLevelDisplay.textContent = level.charAt(0).toUpperCase() + level.slice(1);
-                exercises = dataLatihan[level];
-                currentIndex = 0;
-
-                levelPage.classList.add('hidden');
-                practicePage.classList.remove('hidden');
-                resetPractice();
-            });
-        });
-
-        // Logout
-        document.getElementById('logout-btn').addEventListener('click', () => {
-            levelPage.classList.add('hidden');
-            loginPage.classList.remove('hidden');
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-        });
-
-        // Kembali ke level
-        document.getElementById('back-btn').addEventListener('click', () => {
-            practicePage.classList.add('hidden');
-            levelPage.classList.remove('hidden');
-        });
-
-        // Latihan variables
-        let exercises = [];
-        let currentIndex = 0;
-        let currentLevel = '';
-        let recognition;
-
         const textDisplay = document.getElementById('text-display');
         const hintDisplay = document.getElementById('hint');
-        const startBtn = document.getElementById('start-btn');
-        const micBtn = document.getElementById('mic-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const status = document.getElementById('status');
+
+        // Login & navigation
+        document.getElementById('login-btn').onclick = () => {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            if (username && password === '111') {
+                welcomeUser.textContent = username;
+                pages.login.classList.add('hidden');
+                pages.level.classList.remove('hidden');
+            } else alert('Password salah! Coba korea123');
+        };
+
+        document.querySelectorAll('.level-btn').forEach(btn => {
+            btn.onclick = () => {
+                currentLevel = btn.dataset.level;
+                currentLevelDisplay.textContent = currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1);
+                exercises = dataLatihan[currentLevel];
+                currentIndex = 0;
+                pages.level.classList.add('hidden');
+                pages.practice.classList.remove('hidden');
+                resetPractice();
+            };
+        });
+
+        document.getElementById('guide-btn').onclick = document.getElementById('guide-btn2').onclick = () => {
+            pages.level.classList.add('hidden');
+            pages.practice.classList.add('hidden');
+            pages.guide.classList.remove('hidden');
+        };
+
+        document.getElementById('back-from-guide').onclick = () => {
+            pages.guide.classList.add('hidden');
+            if (currentLevel) pages.practice.classList.remove('hidden');
+            else pages.level.classList.remove('hidden');
+        };
+
+        document.getElementById('back-btn').onclick = () => {
+            pages.practice.classList.add('hidden');
+            pages.level.classList.remove('hidden');
+        };
+
+        document.getElementById('logout-btn').onclick = () => {
+            pages.level.classList.add('hidden');
+            pages.login.classList.remove('hidden');
+        };
+
+        // Practice vars
+        let exercises = [], currentIndex = 0, currentLevel = '';
+        let recognition, currentSyllables = [], matched = new Set();
 
         function resetPractice() {
-            textDisplay.textContent = 'Klik "Mulai Latihan" untuk memulai';
+            textDisplay.innerHTML = '<div style="color:#999;font-size:32px;">Klik Mulai Latihan</div>';
             hintDisplay.textContent = '';
-            status.textContent = '';
-            startBtn.disabled = false;
-            micBtn.disabled = true;
-            nextBtn.disabled = true;
-            textDisplay.classList.remove('correct');
+            document.getElementById('status').textContent = '';
+            document.getElementById('start-btn').disabled = false;
+            document.getElementById('mic-btn').disabled = true;
+            document.getElementById('next-btn').disabled = true;
+            matched = new Set();
         }
 
-        startBtn.addEventListener('click', () => {
+        document.getElementById('start-btn').onclick = () => {
             currentIndex = 0;
             loadExercise();
-            startBtn.disabled = true;
-            micBtn.disabled = false;
-        });
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('mic-btn').disabled = false;
+        };
 
-        nextBtn.addEventListener('click', () => {
+        document.getElementById('next-btn').onclick = () => {
             currentIndex++;
             if (currentIndex >= exercises.length) {
-                textDisplay.textContent = 'Selamat! Kamu sudah selesai level ini 🎉';
+                textDisplay.innerHTML = '<div style="color:green;font-size:40px;">Selesai level ini! 🎉</div>';
                 hintDisplay.textContent = '';
-                textDisplay.classList.remove('correct');
-                micBtn.disabled = true;
-                nextBtn.disabled = true;
-                status.textContent = 'Kerja bagus bro! Pilih level lain atau logout.';
+                document.getElementById('mic-btn').disabled = true;
+                document.getElementById('next-btn').disabled = true;
                 return;
             }
+            matched = new Set();
             loadExercise();
-        });
+        };
 
         function loadExercise() {
-            textDisplay.textContent = exercises[currentIndex].text;
-            hintDisplay.textContent = `Hint: ${exercises[currentIndex].hint}`;
-            textDisplay.classList.remove('correct');
-            status.textContent = '';
-            nextBtn.disabled = true;
+            const ex = exercises[currentIndex];
+            currentSyllables = ex.syllables;
+            textDisplay.innerHTML = '';
+            ex.syllables.forEach(syl => {
+                const span = document.createElement('span');
+                span.className = 'syllable';
+                span.textContent = syl;
+                span.dataset.syl = syl.toLowerCase();
+                textDisplay.appendChild(span);
+            });
+            hintDisplay.textContent = `Hint: ${ex.hint}`;
+            document.getElementById('status').textContent = '';
+            document.getElementById('next-btn').disabled = true;
         }
 
         // Speech Recognition
         if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
             recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
             recognition.lang = 'ko-KR';
-            recognition.continuous = false;
+            recognition.continuous = true;  // biar continuous untuk kalimat panjang
+            recognition.interimResults = true;
 
             recognition.onresult = (event) => {
-                const transcript = event.results[0][0].transcript.trim();
-                const target = exercises[currentIndex].text;
+                let interim = '';
+                let final = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript.trim();
+                    if (event.results[i].isFinal) final += transcript;
+                    else interim += transcript;
+                }
+                const spoken = (final + interim).toLowerCase().replace(/\s/g, '');
 
-                const normTranscript = transcript.replace(/\s/g, '').toLowerCase();
-                const normTarget = target.replace(/\s/g, '').toLowerCase();
+                // Reset highlight
+                document.querySelectorAll('.syllable').forEach(span => {
+                    span.classList.remove('correct', 'incorrect');
+                });
+                matched.clear();
 
-                if (normTranscript.includes(normTarget) || levenshteinDistance(normTranscript, normTarget) <= 4) {
-                    textDisplay.classList.add('correct');
-                    status.textContent = 'Betul banget! Mantap 🔥';
-                    status.style.color = 'green';
-                    nextBtn.disabled = false;
+                // Match per syllable dengan toleransi
+                let allCorrect = true;
+                currentSyllables.forEach((syl, idx) => {
+                    const normSyl = syl.toLowerCase();
+                    const span = textDisplay.querySelectorAll('.syllable')[idx];
+                    if (spoken.includes(normSyl) || levenshteinDistance(spoken.slice(-normSyl.length*2), normSyl) <= 2) {
+                        span.classList.add('correct');
+                        matched.add(idx);
+                    } else if (spoken.length > normSyl.length * (idx+1)) {
+                        span.classList.add('incorrect');
+                        allCorrect = false;
+                    }
+                });
+
+                if (matched.size === currentSyllables.length && allCorrect) {
+                    document.getElementById('status').textContent = 'Betul semua! Mantap 🔥';
+                    document.getElementById('status').style.color = 'green';
+                    document.getElementById('next-btn').disabled = false;
                 } else {
-                    status.textContent = `Kurang tepat. Kamu bilang: "${transcript}"`;
-                    status.style.color = 'red';
+                    document.getElementById('status').textContent = 'Sedang mendengar...';
+                    document.getElementById('status').style.color = '#ff9800';
                 }
             };
 
             recognition.onerror = () => {
-                status.textContent = 'Mic error, coba lagi ya!';
-                status.style.color = 'red';
-                micBtn.textContent = '🎤 Baca Sekarang';
+                document.getElementById('status').textContent = 'Mic error, coba lagi!';
+                document.getElementById('status').style.color = 'red';
             };
 
             recognition.onend = () => {
-                micBtn.textContent = '🎤 Baca Sekarang';
+                document.getElementById('mic-btn').textContent = '🎤 Baca Sekarang';
             };
         } else {
-            status.textContent = 'Browser tidak support mic. Pakai Chrome ya bro!';
-            status.style.color = 'red';
-            micBtn.disabled = true;
+            alert('Browser tidak support speech recognition. Pakai Chrome ya!');
         }
 
-        micBtn.addEventListener('click', () => {
-            if (recognition) {
-                recognition.start();
-                micBtn.textContent = '🎤 Sedang Mendengar...';
-                status.textContent = 'Baca sekarang!';
-                status.style.color = '#ff9800';
-            }
-        });
+        document.getElementById('mic-btn').onclick = () => {
+            recognition.start();
+            document.getElementById('mic-btn').textContent = '🎤 Sedang Mendengar...';
+            document.getElementById('status').textContent = 'Baca kalimatnya sekarang!';
+            document.getElementById('status').style.color = '#ff9800';
+        };
 
         function levenshteinDistance(a, b) {
             const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
@@ -293,11 +342,7 @@
             for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
             for (let j = 1; j <= b.length; j++) {
                 for (let i = 1; i <= a.length; i++) {
-                    matrix[j][i] = a[i-1] === b[j-1] ? matrix[j-1][i-1] : Math.min(
-                        matrix[j-1][i-1] + 1,
-                        matrix[j][i-1] + 1,
-                        matrix[j-1][i] + 1
-                    );
+                    matrix[j][i] = a[i-1] === b[j-1] ? matrix[j-1][i-1] : Math.min(matrix[j-1][i-1] + 1, matrix[j][i-1] + 1, matrix[j-1][i] + 1);
                 }
             }
             return matrix[b.length][a.length];
