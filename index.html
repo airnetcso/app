@@ -16,12 +16,12 @@ body{
 
 h2{text-align:center}
 
-input,select,button{
+input,button{
   width:100%;
   padding:14px;
   margin:8px 0;
   font-size:16px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid #ccc;
 }
 
@@ -34,21 +34,22 @@ button{
 
 .text-box{
   background:white;
-  padding:20px;
-  border-radius:16px;
-  font-size:26px;
-  line-height:1.6;
+  padding:22px;
+  border-radius:18px;
+  font-size:28px;
+  line-height:1.7;
   text-align:center;
 }
 
-.ok{color:#1db954;font-weight:700}
-.bad{color:#ff4d4d}
+.ok{color:#1db954;font-weight:800}
+.bad{color:#ff4d4d;font-weight:800}
 .wait{color:#999}
 
 .status{
   text-align:center;
   margin-top:15px;
-  font-size:14px;
+  font-size:15px;
+  min-height:22px;
 }
 </style>
 </head>
@@ -68,29 +69,21 @@ button{
   <button onclick="start('pemula')">Pemula</button>
   <button onclick="start('sedang')">Sedang</button>
   <button onclick="start('mahir')">Mahir</button>
-  <button onclick="go('cara')">Cara Baca</button>
-</div>
-
-<!-- CARA BACA -->
-<div class="screen" id="cara">
-  <h2>Cara Membaca</h2>
-  <p>• Baca perlahan<br>• Ucapkan jelas<br>• Jangan terlalu cepat</p>
-  <button onclick="go('menu')">Kembali</button>
 </div>
 
 <!-- LATIHAN -->
 <div class="screen" id="latihan">
   <h2>Latihan Membaca</h2>
   <div class="text-box" id="target"></div>
-  <div class="status" id="status">🎙️ Tekan mulai dan baca</div>
+  <div class="status" id="status">🎙️ Tekan mulai lalu baca</div>
   <button onclick="startRec()">Mulai</button>
   <button onclick="stopRec()">Stop</button>
   <button onclick="go('menu')">Selesai</button>
 </div>
 
 <script>
-let kalimat = "감사합니다";
-let index = 0;
+let kalimat="";
+let pos=0;
 let rec;
 
 function go(id){
@@ -99,17 +92,18 @@ function go(id){
 }
 
 function start(level){
-  // nanti load JSON dari /data/level.json
-  kalimat = "감사합니다";
-  index = 0;
+  // nanti dari JSON
+  kalimat="감사합니다";
+  pos=0;
   render();
-  go('latihan');
+  go("latihan");
 }
 
-function render(){
+function render(state="wait"){
   let html="";
   [...kalimat].forEach((c,i)=>{
-    if(i<index) html+=`<span class="ok">${c}</span>`;
+    if(i<pos) html+=`<span class="ok">${c}</span>`;
+    else if(i===pos && state==="bad") html+=`<span class="bad">${c}</span>`;
     else html+=`<span class="wait">${c}</span>`;
   });
   target.innerHTML=html;
@@ -117,22 +111,33 @@ function render(){
 
 function startRec(){
   if(!('webkitSpeechRecognition' in window)){
-    alert("Browser tidak support");
+    alert("Browser tidak support speech recognition");
     return;
   }
+
   rec=new webkitSpeechRecognition();
   rec.lang="ko-KR";
   rec.continuous=true;
   rec.interimResults=true;
 
   rec.onresult=e=>{
-    let text=e.results[e.results.length-1][0].transcript.replace(/\s/g,"");
-    if(kalimat[index]===text[text.length-1]){
-      index++;
+    const res=e.results[e.results.length-1][0].transcript.replace(/\s/g,"");
+    if(!res) return;
+
+    const last=res[res.length-1];
+    const targetChar=kalimat[pos];
+
+    if(last===targetChar){
+      pos++;
       render();
-      status.textContent="✅ Benar";
+      status.textContent=`✔️ Benar: ${last}`;
+      if(pos>=kalimat.length){
+        status.textContent="🎉 Selesai! Bagus!";
+        rec.stop();
+      }
     }else{
-      status.textContent="❌ Salah";
+      render("bad");
+      status.textContent=`❌ Salah, ulangi: ${targetChar}`;
     }
   };
   rec.start();
@@ -140,6 +145,7 @@ function startRec(){
 
 function stopRec(){
   if(rec) rec.stop();
+  status.textContent="⏹️ Dihentikan";
 }
 </script>
 
