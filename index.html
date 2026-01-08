@@ -14,39 +14,42 @@ body{
 .container{
   padding:20px;
 }
-h2{text-align:center}
+h2{
+  text-align:center;
+  margin-bottom:10px;
+}
 
-.box{
+.text-box{
   background:#fff;
   padding:24px;
   border-radius:20px;
-  font-size:28px;
+  font-size:26px;
   line-height:1.8;
   text-align:center;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 
 .ok{color:#1db954;font-weight:800}
 .bad{color:#ff4d4d;font-weight:800}
 .wait{color:#999}
 
+.status{
+  text-align:center;
+  font-size:14px;
+  min-height:22px;
+  margin-bottom:10px;
+}
+
 button{
   width:100%;
-  padding:14px;
-  margin-top:10px;
+  padding:15px;
+  margin-top:8px;
   font-size:16px;
-  border-radius:14px;
+  border-radius:16px;
   border:none;
   background:#4f8cff;
   color:#fff;
   font-weight:700;
-}
-
-.status{
-  text-align:center;
-  font-size:14px;
-  min-height:20px;
-  margin-bottom:10px;
 }
 </style>
 </head>
@@ -54,9 +57,9 @@ button{
 <body>
 
 <div class="container">
-  <h2>Latihan Membaca</h2>
+  <h2>Latihan Membaca Korea</h2>
 
-  <div class="box" id="textBox"></div>
+  <div class="text-box" id="textBox"></div>
   <div class="status" id="status">🎙️ Tekan mulai dan baca sampai selesai</div>
 
   <button id="startBtn" onclick="start()">▶ Mulai</button>
@@ -64,67 +67,94 @@ button{
 </div>
 
 <script>
-const kalimat = "저는 학생입니다";
-const kata = kalimat.split(" ");
+// ================== DATA LATIHAN ==================
+const kalimat =
+"저는 한국어를 공부하고 있습니다 감사합니다";
+
+// pecah per kata
+const kataTarget = kalimat.split(" ");
+
+// ================== STATE ==================
 let idx = 0;
 let rec;
+let spokenWords = [];
 
+// ================== RENDER ==================
 function render(state="wait"){
   let html="";
-  kata.forEach((k,i)=>{
-    if(i<idx) html+=`<span class="ok">${k} </span>`;
-    else if(i===idx && state==="bad") html+=`<span class="bad">${k} </span>`;
-    else html+=`<span class="wait">${k} </span>`;
+  kataTarget.forEach((k,i)=>{
+    if(i < idx) html += `<span class="ok">${k} </span>`;
+    else if(i === idx && state === "bad") html += `<span class="bad">${k} </span>`;
+    else html += `<span class="wait">${k} </span>`;
   });
-  textBox.innerHTML=html;
+  textBox.innerHTML = html;
 }
 render();
 
+// ================== START ==================
 function start(){
-  startBtn.style.display="none";
-  repeatBtn.style.display="none";
-  status.textContent="🎙️ Mendengarkan...";
+  idx = 0;
+  spokenWords = [];
+  render();
+  status.textContent = "🎙️ Mendengarkan...";
+  startBtn.style.display = "none";
+  repeatBtn.style.display = "none";
   startRec();
 }
 
+// ================== SPEECH ==================
 function startRec(){
-  rec=new webkitSpeechRecognition();
-  rec.lang="ko-KR";
-  rec.continuous=true;
-  rec.interimResults=true;
+  if(!('webkitSpeechRecognition' in window)){
+    alert("Browser tidak mendukung speech recognition");
+    return;
+  }
 
-  rec.onresult=e=>{
-    const t=e.results[e.results.length-1][0].transcript.trim();
-    if(!t) return;
+  rec = new webkitSpeechRecognition();
+  rec.lang = "ko-KR";
+  rec.continuous = true;
+  rec.interimResults = true;
 
-    const lastWord=t.split(" ").pop();
-    const target=kata[idx];
+  rec.onresult = e => {
+    const text = e.results[e.results.length-1][0].transcript.trim();
+    if(!text) return;
 
-    if(lastWord===target){
-      idx++;
-      render();
-      status.textContent=`✔️ Benar: ${lastWord}`;
+    // pecah semua kata yang terdengar
+    const words = text.split(/\s+/);
 
-      if(idx>=kata.length){
-        status.textContent="🎉 Selesai! Bagus!";
-        rec.stop();
-        repeatBtn.style.display="block";
+    // proses kata satu per satu
+    while(words.length && idx < kataTarget.length){
+      const w = words.shift();
+      const target = kataTarget[idx];
+
+      if(w === target){
+        idx++;
+        render();
+        status.textContent = `✔️ Benar: ${w}`;
+      }else{
+        render("bad");
+        status.textContent = `❌ Salah: ${target}`;
+        break;
       }
-    }else{
-      render("bad");
-      status.textContent=`❌ Salah: ${target}`;
+    }
+
+    // selesai semua
+    if(idx >= kataTarget.length){
+      status.textContent = "🎉 Selesai! Bacaan bagus!";
+      rec.stop();
+      repeatBtn.style.display = "block";
     }
   };
 
   rec.start();
 }
 
+// ================== RESET ==================
 function reset(){
-  idx=0;
+  idx = 0;
   render();
-  status.textContent="🎙️ Tekan mulai dan baca sampai selesai";
-  startBtn.style.display="block";
-  repeatBtn.style.display="none";
+  status.textContent = "🎙️ Tekan mulai dan baca sampai selesai";
+  startBtn.style.display = "block";
+  repeatBtn.style.display = "none";
 }
 </script>
 
