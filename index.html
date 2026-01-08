@@ -11,141 +11,120 @@ body{
   font-family:system-ui;
   background:#f4f6fb;
 }
-.screen{display:none;padding:20px}
-.screen.active{display:block}
-
+.container{
+  padding:20px;
+}
 h2{text-align:center}
 
-input,button{
-  width:100%;
-  padding:14px;
-  margin:8px 0;
-  font-size:16px;
-  border-radius:14px;
-  border:1px solid #ccc;
-}
-
-button{
-  background:#4f8cff;
-  color:white;
-  border:none;
-  font-weight:700;
-}
-
-.text-box{
-  background:white;
-  padding:22px;
-  border-radius:18px;
+.box{
+  background:#fff;
+  padding:24px;
+  border-radius:20px;
   font-size:28px;
-  line-height:1.7;
+  line-height:1.8;
   text-align:center;
+  margin-bottom:15px;
 }
 
 .ok{color:#1db954;font-weight:800}
 .bad{color:#ff4d4d;font-weight:800}
 .wait{color:#999}
 
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  font-size:16px;
+  border-radius:14px;
+  border:none;
+  background:#4f8cff;
+  color:#fff;
+  font-weight:700;
+}
+
 .status{
   text-align:center;
-  margin-top:15px;
-  font-size:15px;
-  min-height:22px;
+  font-size:14px;
+  min-height:20px;
+  margin-bottom:10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div class="screen active" id="login">
-  <h2>Login</h2>
-  <input placeholder="Nama">
-  <button onclick="go('menu')">Masuk</button>
-</div>
-
-<!-- MENU -->
-<div class="screen" id="menu">
-  <h2>Pilih Level</h2>
-  <button onclick="start('pemula')">Pemula</button>
-  <button onclick="start('sedang')">Sedang</button>
-  <button onclick="start('mahir')">Mahir</button>
-</div>
-
-<!-- LATIHAN -->
-<div class="screen" id="latihan">
+<div class="container">
   <h2>Latihan Membaca</h2>
-  <div class="text-box" id="target"></div>
-  <div class="status" id="status">🎙️ Tekan mulai lalu baca</div>
-  <button onclick="startRec()">Mulai</button>
-  <button onclick="stopRec()">Stop</button>
-  <button onclick="go('menu')">Selesai</button>
+
+  <div class="box" id="textBox"></div>
+  <div class="status" id="status">🎙️ Tekan mulai dan baca sampai selesai</div>
+
+  <button id="startBtn" onclick="start()">▶ Mulai</button>
+  <button id="repeatBtn" onclick="reset()" style="display:none">🔁 Ulangi</button>
 </div>
 
 <script>
-let kalimat="";
-let pos=0;
+const kalimat = "저는 학생입니다";
+const kata = kalimat.split(" ");
+let idx = 0;
 let rec;
-
-function go(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-function start(level){
-  // nanti dari JSON
-  kalimat="감사합니다";
-  pos=0;
-  render();
-  go("latihan");
-}
 
 function render(state="wait"){
   let html="";
-  [...kalimat].forEach((c,i)=>{
-    if(i<pos) html+=`<span class="ok">${c}</span>`;
-    else if(i===pos && state==="bad") html+=`<span class="bad">${c}</span>`;
-    else html+=`<span class="wait">${c}</span>`;
+  kata.forEach((k,i)=>{
+    if(i<idx) html+=`<span class="ok">${k} </span>`;
+    else if(i===idx && state==="bad") html+=`<span class="bad">${k} </span>`;
+    else html+=`<span class="wait">${k} </span>`;
   });
-  target.innerHTML=html;
+  textBox.innerHTML=html;
+}
+render();
+
+function start(){
+  startBtn.style.display="none";
+  repeatBtn.style.display="none";
+  status.textContent="🎙️ Mendengarkan...";
+  startRec();
 }
 
 function startRec(){
-  if(!('webkitSpeechRecognition' in window)){
-    alert("Browser tidak support speech recognition");
-    return;
-  }
-
   rec=new webkitSpeechRecognition();
   rec.lang="ko-KR";
   rec.continuous=true;
   rec.interimResults=true;
 
   rec.onresult=e=>{
-    const res=e.results[e.results.length-1][0].transcript.replace(/\s/g,"");
-    if(!res) return;
+    const t=e.results[e.results.length-1][0].transcript.trim();
+    if(!t) return;
 
-    const last=res[res.length-1];
-    const targetChar=kalimat[pos];
+    const lastWord=t.split(" ").pop();
+    const target=kata[idx];
 
-    if(last===targetChar){
-      pos++;
+    if(lastWord===target){
+      idx++;
       render();
-      status.textContent=`✔️ Benar: ${last}`;
-      if(pos>=kalimat.length){
+      status.textContent=`✔️ Benar: ${lastWord}`;
+
+      if(idx>=kata.length){
         status.textContent="🎉 Selesai! Bagus!";
         rec.stop();
+        repeatBtn.style.display="block";
       }
     }else{
       render("bad");
-      status.textContent=`❌ Salah, ulangi: ${targetChar}`;
+      status.textContent=`❌ Salah: ${target}`;
     }
   };
+
   rec.start();
 }
 
-function stopRec(){
-  if(rec) rec.stop();
-  status.textContent="⏹️ Dihentikan";
+function reset(){
+  idx=0;
+  render();
+  status.textContent="🎙️ Tekan mulai dan baca sampai selesai";
+  startBtn.style.display="block";
+  repeatBtn.style.display="none";
 }
 </script>
 
